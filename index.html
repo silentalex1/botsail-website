@@ -16,16 +16,13 @@
             --tertiary: #9333ea;
             --tertiary-hover: #7c2d9b;
             --text: #f3f4f6;
-            --bg-dark: #0d1b2a;
-            --bg-light: #1a263a;
-            --glass-bg: rgba(26, 38, 58, 0.96);
-            --shadow: 0 30px 120px rgba(0, 0, 0, 0.85);
-            --glow: 0 0 25px rgba(167, 139, 250, 0.8);
-            --error-bg: rgba(248, 113, 113, 0.35);
-            --navbar-bg: rgba(13, 27, 42, 0.98);
-            --particle-color: rgba(167, 139, 250, 0.35);
-            --gradient-start: #0d1b2a;
-            --gradient-end: #1a263a;
+            --bg-dark: #0e1a2a;
+            --bg-light: #182a3c;
+            --glass-bg: rgba(24, 42, 60, 0.95);
+            --shadow: 0 15px 60px rgba(0, 0, 0, 0.7);
+            --glow: 0 0 15px rgba(167, 139, 250, 0.6);
+            --error-bg: rgba(248, 113, 113, 0.3);
+            --navbar-bg: rgba(14, 26, 42, 0.98);
         }
 
         body {
@@ -33,274 +30,186 @@
             min-height: 100vh;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
-            background: linear-gradient(175deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            background: linear-gradient(175deg, var(--bg-dark), var(--bg-light));
             overflow-x: hidden;
-            perspective: 1800px;
-            position: relative;
+            perspective: 1000px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background 1.5s ease;
         }
 
         .navbar {
             background: var(--navbar-bg);
-            backdrop-filter: blur(30px);
-            padding: 1.2rem 0.8rem;
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 0.5rem;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 50;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            transform-style: preserve-3d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         .navbar-brand {
-            font-size: 2rem;
-            font-weight: 900;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-left: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            gap: 0.6rem;
+            margin-left: 0.8rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.8rem;
-            margin-left: 1rem;
+            gap: 0.6rem;
+            margin-left: 0.8rem;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-size: 1.2rem;
-            padding: 0.7rem 1.4rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.5s ease;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            text-shadow: 0 0 5px rgba(167, 139, 250, 0.3);
+            gap: 0.4rem;
         }
 
         .nav-links a:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-4px) scale(1.07);
-            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.7);
-            text-shadow: 0 0 10px rgba(167, 139, 250, 0.6);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 10px rgba(167, 139, 250, 0.5);
         }
 
         .container {
             position: relative;
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 60px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 3;
-            padding-top: 80px;
-            padding-bottom: 20px;
+            padding-top: 60px;
+            padding-bottom: 15px;
         }
 
         .input-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(40px);
-            border-radius: 40px;
-            padding: 3rem;
-            width: min(94%, 700px);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 2rem;
+            width: min(90%, 500px);
             box-shadow: var(--shadow);
-            border: 3px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             transform-style: preserve-3d;
-            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s ease;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .input-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite ease-out;
-            z-index: 0;
         }
 
         .input-card:hover {
-            transform: translateZ(80px) scale(1.08);
-            box-shadow: 0 40px 140px rgba(167, 139, 250, 1.2);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0); opacity: 0.5; }
-            100% { transform: scale(1.5); opacity: 0; }
+            transform: translateZ(40px) scale(1.04);
+            box-shadow: 0 20px 70px rgba(167, 139, 250, 0.8);
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 1.5rem;
             width: 100%;
-            position: relative;
-            z-index: 1;
         }
 
         .domain-input {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
-            border-radius: 20px;
-            padding: 1.4rem 2.5rem;
+            border-radius: 15px;
+            padding: 0.9rem 1.5rem;
             color: var(--text);
-            font-size: 1.2rem;
+            font-size: 1rem;
             outline: none;
-            transition: all 0.7s ease;
-            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin-left: 15%;
-            width: 70%;
-            position: relative;
-            z-index: 2;
+            transition: all 0.4s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-left: 10%;
+            width: 80%;
         }
 
         .domain-input:focus {
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: var(--glow), inset 0 2px 5px rgba(167, 139, 250, 0.3);
-            transform: scale(1.04);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: var(--glow), inset 0 1px 3px rgba(167, 139, 250, 0.2);
+            transform: scale(1.02);
         }
 
         .domain-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
             width: 80%;
             margin-left: 10%;
         }
 
-        .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .unblock-button {
+        .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .access-button, .fetch-button {
             background: var(--primary);
             border: none;
-            border-radius: 20px;
-            padding: 1rem 2rem;
+            border-radius: 15px;
+            padding: 0.7rem 1.5rem;
             color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 40px rgba(167, 139, 250, 0.9);
-            position: relative;
-            overflow: hidden;
+            gap: 0.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.6);
         }
 
-        .view-button::after, .history-button::after, .clear-button::after, .permission-button::after, .analyze-button::after, .security-button::after, .unblock-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-            z-index: 0;
+        .history-button { background: var(--accent); }
+        .clear-button { background: #f87171; }
+        .permission-button { background: #eab308; }
+        .analyze-button { background: var(--secondary); }
+        .security-button { background: var(--tertiary); }
+        .access-button { background: #10b981; }
+        .fetch-button { background: #6366f1; }
+
+        .view-button:hover, .history-button:hover, .clear-button:hover, .permission-button:hover, .analyze-button:hover, .security-button:hover, .access-button:hover, .fetch-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.8);
         }
 
-        .view-button:hover::after, .history-button:hover::after, .clear-button:hover::after, .permission-button:hover::after, .analyze-button:hover::after, .security-button:hover::after, .unblock-button:hover::after {
-            width: 200%;
-            height: 200%;
-        }
-
-        .history-button {
-            background: var(--accent);
-        }
-
-        .clear-button {
-            background: #f87171;
-        }
-
-        .permission-button {
-            background: #eab308;
-        }
-
-        .analyze-button {
-            background: var(--secondary);
-        }
-
-        .security-button {
-            background: var(--tertiary);
-        }
-
-        .unblock-button {
-            background: #10b981;
-        }
-
-        .view-button:hover, .history-button:hover, .clear-button:hover, .permission-button:hover, .analyze-button:hover, .security-button:hover, .unblock-button:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 20px 50px rgba(167, 139, 250, 1.1);
-        }
-
-        .view-button:hover {
-            background: var(--primary-hover);
-        }
-
-        .history-button:hover {
-            background: var(--accent-hover);
-        }
-
-        .clear-button:hover {
-            background: #dc2626;
-        }
-
-        .permission-button:hover {
-            background: #ca8a04;
-        }
-
-        .analyze-button:hover {
-            background: var(--secondary-hover);
-        }
-
-        .security-button:hover {
-            background: var(--tertiary-hover);
-        }
-
-        .unblock-button:hover {
-            background: #059669;
-        }
+        .view-button:hover { background: var(--primary-hover); }
+        .history-button:hover { background: var(--accent-hover); }
+        .clear-button:hover { background: #dc2626; }
+        .permission-button:hover { background: #ca8a04; }
+        .analyze-button:hover { background: var(--secondary-hover); }
+        .security-button:hover { background: var(--tertiary-hover); }
+        .access-button:hover { background: #059669; }
+        .fetch-button:hover { background: #4f46e5; }
 
         .error-message {
             color: #f87171;
             background: var(--error-bg);
-            padding: 1rem;
-            border-radius: 18px;
+            padding: 0.7rem;
+            border-radius: 12px;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.7s ease;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 18px rgba(248, 113, 113, 0.5);
-            width: 70%;
-            margin-left: 15%;
-            position: relative;
-            z-index: 2;
+            transition: opacity 0.5s ease;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(248, 113, 113, 0.4);
+            width: 80%;
+            margin-left: 10%;
         }
 
         .error-message.show {
@@ -309,19 +218,17 @@
 
         .history-panel {
             position: fixed;
-            top: 80px;
-            right: -450px;
-            width: 400px;
-            height: calc(100% - 80px);
+            top: 60px;
+            right: -350px;
+            width: 300px;
+            height: calc(100% - 60px);
             background: var(--glass-bg);
-            backdrop-filter: blur(40px);
-            border-left: 3px solid rgba(255, 255, 255, 0.4);
-            padding: 2rem;
-            transition: right 0.7s ease;
+            backdrop-filter: blur(25px);
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            transition: right 0.5s ease;
             overflow-y: auto;
             z-index: 40;
-            display: flex;
-            flex-direction: column;
         }
 
         .history-panel.open {
@@ -329,51 +236,44 @@
         }
 
         .history-item {
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 18px;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 0.7rem;
+            margin-bottom: 0.7rem;
             cursor: pointer;
-            transition: all 0.6s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transform-style: preserve-3d;
+            transition: all 0.4s ease;
         }
 
         .history-item:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: scale(1.05) translateZ(10px);
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.03);
         }
 
         .history-item p {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             color: var(--text);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            text-shadow: 0 0 3px rgba(167, 139, 250, 0.2);
         }
 
         .history-item .delete-btn {
             background: #f87171;
             border: none;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 3px 10px rgba(248, 113, 113, 0.3);
+            transition: all 0.3s ease;
         }
 
         .history-item .delete-btn:hover {
             background: #dc2626;
-            transform: scale(1.2);
-            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.5);
+            transform: scale(1.1);
         }
 
         .background-overlay {
@@ -385,67 +285,36 @@
             z-index: -1;
             background-size: cover;
             background-position: center;
-            filter: blur(20px);
-            opacity: 0.6;
-            transition: background-image 2.5s ease, opacity 2s ease;
-            transform-style: preserve-3d;
-        }
-
-        .particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            pointer-events: none;
+            filter: blur(15px);
+            opacity: 0.5;
+            transition: background-image 1.5s ease, opacity 1s ease;
         }
 
         .suggestion-list {
             background: var(--glass-bg);
-            border-radius: 18px;
-            padding: 1rem;
-            max-height: 200px;
+            border-radius: 12px;
+            padding: 0.7rem;
+            max-height: 150px;
             overflow-y: auto;
             position: absolute;
             top: 100%;
-            left: 15%;
-            right: 15%;
+            left: 10%;
+            right: 10%;
             display: none;
             z-index: 20;
             box-shadow: var(--shadow);
-            transform-style: preserve-3d;
         }
 
         .suggestion-item {
-            padding: 0.8rem;
+            padding: 0.5rem;
             cursor: pointer;
-            border-radius: 12px;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .suggestion-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.2), transparent);
-            animation: shine 2s infinite;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(8px) scale(1.02);
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 0; }
-            100% { left: 100%; }
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
         }
 
         .permission-modal {
@@ -454,12 +323,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 60;
-            backdrop-filter: blur(10px);
         }
 
         .permission-modal.show {
@@ -468,90 +336,49 @@
 
         .modal-content {
             background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            border-radius: 30px;
-            padding: 3rem;
-            width: min(94%, 600px);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            width: min(90%, 450px);
             box-shadow: var(--shadow);
             text-align: center;
-            transform-style: preserve-3d;
-            transition: transform 0.8s ease, box-shadow 0.8s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .modal-content::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
-            animation: pulse 20s infinite ease-in-out;
-            z-index: 0;
+            transition: transform 0.6s ease;
         }
 
         .modal-content:hover {
-            transform: translateZ(60px) scale(1.06);
-            box-shadow: 0 50px 150px rgba(167, 139, 250, 1.3);
+            transform: translateZ(30px) scale(1.03);
         }
 
         .modal-content h2 {
             margin-top: 0;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--text);
-            text-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
         }
 
         .modal-content p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text);
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-            text-shadow: 0 0 5px rgba(167, 139, 250, 0.2);
+            margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
-            position: relative;
-            z-index: 1;
         }
 
         .modal-button {
             background: var(--primary);
             border: none;
-            border-radius: 18px;
-            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            padding: 0.7rem 1.5rem;
             color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 12px 35px rgba(167, 139, 250, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .modal-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s ease, height 0.5s ease;
-            z-index: 0;
-        }
-
-        .modal-button:hover::before {
-            width: 200%;
-            height: 200%;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(167, 139, 250, 0.6);
         }
 
         .modal-button.cancel {
@@ -560,8 +387,8 @@
 
         .modal-button:hover {
             background: var(--primary-hover);
-            transform: translateY(-5px) scale(1.06);
-            box-shadow: 0 18px 50px rgba(167, 139, 250, 1);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.8);
         }
 
         .modal-button.cancel:hover {
@@ -570,20 +397,17 @@
 
         .analysis-panel {
             position: fixed;
-            bottom: -500px;
+            bottom: -400px;
             left: 0;
             width: 100%;
-            height: 450px;
+            height: 350px;
             background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            border-top: 3px solid rgba(255, 255, 255, 0.3);
-            padding: 2.5rem;
-            transition: bottom 0.7s ease;
+            backdrop-filter: blur(20px);
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            transition: bottom 0.5s ease;
             z-index: 40;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            transform-style: preserve-3d;
         }
 
         .analysis-panel.open {
@@ -592,57 +416,51 @@
 
         .analysis-content {
             color: var(--text);
-            font-size: 1.1rem;
-            flex-grow: 1;
-            text-shadow: 0 0 4px rgba(167, 139, 250, 0.2);
+            font-size: 0.9rem;
         }
 
         .analysis-content h3 {
             margin-top: 0;
-            font-size: 1.7rem;
-            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+            font-size: 1.3rem;
         }
 
         .analysis-content p {
-            margin: 0.8rem 0;
-            line-height: 1.6;
+            margin: 0.5rem 0;
+            line-height: 1.4;
         }
 
         .security-panel {
             position: fixed;
-            top: -450px;
+            top: -350px;
             left: 0;
             width: 100%;
-            height: 400px;
+            height: 300px;
             background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-            padding: 2.5rem;
-            transition: top 0.7s ease;
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            transition: top 0.5s ease;
             z-index: 40;
             overflow-y: auto;
-            transform-style: preserve-3d;
         }
 
         .security-panel.open {
-            top: 80px;
+            top: 60px;
         }
 
         .security-content {
             color: var(--text);
-            font-size: 1.1rem;
-            text-shadow: 0 0 4px rgba(147, 51, 234, 0.2);
+            font-size: 0.9rem;
         }
 
         .security-content h3 {
             margin-top: 0;
-            font-size: 1.7rem;
-            text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            font-size: 1.3rem;
         }
 
         .security-content p {
-            margin: 0.8rem 0;
-            line-height: 1.6;
+            margin: 0.5rem 0;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -652,14 +470,13 @@
             <i class="fas fa-skull-crossbones"></i> Exploit Test Area
         </div>
         <div class="nav-links">
-            <a href="#home"><i class="fas fa-home"></i> Home</a>
-            <a href="#cheats"><i class="fas fa-code"></i> Cheats</a>
-            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="#support"><i class="fas fa-headset"></i> Support</a>
+            <a href="/home"><i class="fas fa-home"></i> Home</a>
+            <a href="/cheats"><i class="fas fa-code"></i> Cheats</a>
+            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="/support"><i class="fas fa-headset"></i> Support</a>
         </div>
     </nav>
-    <canvas class="particle-canvas" id="particleCanvas"></canvas>
     <div class="background-overlay" id="backgroundOverlay"></div>
     <div class="container">
         <div class="input-card">
@@ -669,40 +486,27 @@
                     <div class="suggestion-list" id="suggestionList"></div>
                 </div>
                 <div class="action-buttons">
-                    <button class="view-button" id="viewButton">
-                        <i class="fas fa-globe"></i> View Website
-                    </button>
-                    <button class="history-button" id="historyButton">
-                        <i class="fas fa-history"></i> History
-                    </button>
-                    <button class="clear-button" id="clearButton">
-                        <i class="fas fa-trash"></i> Clear
-                    </button>
-                    <button class="permission-button" id="permissionButton">
-                        <i class="fas fa-shield-alt"></i> Permissions
-                    </button>
-                    <button class="analyze-button" id="analyzeButton">
-                        <i class="fas fa-chart-line"></i> Analyze
-                    </button>
-                    <button class="security-button" id="securityButton">
-                        <i class="fas fa-lock"></i> Security
-                    </button>
-                    <button class="unblock-button" id="unblockButton">
-                        <i class="fas fa-unlock"></i> Unblock
-                    </button>
+                    <button class="view-button" id="viewButton"><i class="fas fa-globe"></i> View</button>
+                    <button class="history-button" id="historyButton"><i class="fas fa-history"></i> History</button>
+                    <button class="clear-button" id="clearButton"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="permission-button" id="permissionButton"><i class="fas fa-shield-alt"></i> Permissions</button>
+                    <button class="analyze-button" id="analyzeButton"><i class="fas fa-chart-line"></i> Analyze</button>
+                    <button class="security-button" id="securityButton"><i class="fas fa-lock"></i> Security</button>
+                    <button class="access-button" id="accessButton"><i class="fas fa-key"></i> Access</button>
+                    <button class="fetch-button" id="fetchButton"><i class="fas fa-download"></i> Fetch Code</button>
                 </div>
                 <div class="error-message" id="errorMessage"></div>
             </div>
         </div>
     </div>
     <div class="history-panel" id="historyPanel">
-        <h3 style="color: var(--text); margin-top: 0; font-size: 1.4rem;">Recent Domains</h3>
+        <h3>Recent Domains</h3>
         <div id="historyList"></div>
     </div>
     <div class="permission-modal" id="permissionModal">
         <div class="modal-content">
             <h2>Request Full Permissions</h2>
-            <p>Granting full permissions enables clipboard access, geolocation, notifications, service workers, and advanced security analysis. This will optimize your experience with real-time data and unblocking capabilities. Do you want to proceed?</p>
+            <p>Granting permissions enables clipboard access, geolocation, notifications, and advanced features. Proceed?</p>
             <div class="modal-buttons">
                 <button class="modal-button" id="grantPermission">Grant</button>
                 <button class="modal-button cancel" id="cancelPermission">Cancel</button>
@@ -712,13 +516,13 @@
     <div class="analysis-panel" id="analysisPanel">
         <div class="analysis-content" id="analysisContent">
             <h3>Website Analysis</h3>
-            <p>Enter a domain and click Analyze to evaluate its safety.</p>
+            <p>Enter a domain to evaluate safety.</p>
         </div>
     </div>
     <div class="security-panel" id="securityPanel">
         <div class="security-content" id="securityContent">
             <h3>Security Scan</h3>
-            <p>Enter a domain and click Security to check for vulnerabilities.</p>
+            <p>Enter a domain to check vulnerabilities.</p>
         </div>
     </div>
 
@@ -733,13 +537,13 @@
                 this.permissionButton = document.getElementById('permissionButton');
                 this.analyzeButton = document.getElementById('analyzeButton');
                 this.securityButton = document.getElementById('securityButton');
-                this.unblockButton = document.getElementById('unblockButton');
+                this.accessButton = document.getElementById('accessButton');
+                this.fetchButton = document.getElementById('fetchButton');
                 this.errorMessage = document.getElementById('errorMessage');
                 this.backgroundOverlay = document.getElementById('backgroundOverlay');
                 this.historyPanel = document.getElementById('historyPanel');
                 this.historyList = document.getElementById('historyList');
                 this.suggestionList = document.getElementById('suggestionList');
-                this.particleCanvas = document.getElementById('particleCanvas');
                 this.permissionModal = document.getElementById('permissionModal');
                 this.grantPermission = document.getElementById('grantPermission');
                 this.cancelPermission = document.getElementById('cancelPermission');
@@ -749,14 +553,12 @@
                 this.securityContent = document.getElementById('securityContent');
                 this.validUrlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
                 this.history = JSON.parse(localStorage.getItem('domainHistory')) || [];
-                this.particles = [];
-                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'facebook.com', 'reddit.com', 'twitter.com'];
+                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com'];
                 this.permissionsGranted = false;
                 this.proxyChain = ['https://cors-anywhere.herokuapp.com/', 'https://api.allorigins.win/get?url=', 'https://proxy.cors.sh/'];
                 this.encryptionKey = btoa('x7k9p2m4q8j5v3n1r6t0y2w4z6u8i0o');
                 this.initEventListeners();
                 this.initAnimations();
-                this.initParticles();
                 this.renderHistory();
             }
 
@@ -767,174 +569,64 @@
                 this.permissionButton.addEventListener('click', () => this.showPermissionModal());
                 this.analyzeButton.addEventListener('click', () => this.handleAnalyzeWebsite());
                 this.securityButton.addEventListener('click', () => this.handleSecurityScan());
-                this.unblockButton.addEventListener('click', () => this.handleUnblockWebsite());
+                this.accessButton.addEventListener('click', () => this.handleAccessWebsite());
+                this.fetchButton.addEventListener('click', () => this.handleFetchCode());
                 this.grantPermission.addEventListener('click', () => this.handleGrantPermission());
                 this.cancelPermission.addEventListener('click', () => this.hidePermissionModal());
                 this.domainInput.addEventListener('input', this.debounce(() => {
                     this.updateBackground();
                     this.updateSuggestions();
-                }, 250));
+                }, 200));
                 this.domainInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.handleUnblockWebsite();
+                    if (e.key === 'Enter') this.handleAccessWebsite();
                 });
                 this.domainInput.addEventListener('focus', () => this.showSuggestions());
-                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 200));
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 150));
                 this.suggestionList.addEventListener('click', (e) => {
                     const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
                     if (suggestion) {
                         this.domainInput.value = suggestion;
-                        this.handleUnblockWebsite();
+                        this.handleAccessWebsite();
                     }
                 });
                 this.historyList.addEventListener('click', (e) => {
                     const domain = e.target.closest('.history-item')?.dataset.domain;
                     const deleteBtn = e.target.closest('.delete-btn');
                     if (deleteBtn) {
-                        const domainToDelete = deleteBtn.closest('.history-item').dataset.domain;
-                        this.deleteHistoryItem(domainToDelete);
+                        this.deleteHistoryItem(domain);
                     } else if (domain) {
                         this.domainInput.value = domain;
-                        this.handleUnblockWebsite();
+                        this.handleAccessWebsite();
                     }
                 });
-                window.addEventListener('resize', () => this.resizeCanvas());
             }
 
             initAnimations() {
-                gsap.from('.navbar', {
-                    duration: 1.5,
-                    y: -150,
-                    opacity: 0,
-                    ease: 'power4.out'
-                });
-                gsap.from('.input-card', {
-                    duration: 2,
-                    y: 200,
-                    opacity: 0,
-                    ease: 'power4.out',
-                    rotateX: 70
-                });
-                gsap.from('.domain-input', {
-                    duration: 1.8,
-                    delay: 0.5,
-                    x: -150,
-                    opacity: 0,
-                    ease: 'power3.out'
-                });
-                gsap.from('.action-buttons', {
-                    duration: 1.8,
-                    delay: 0.7,
-                    x: 150,
-                    opacity: 0,
-                    ease: 'power3.out'
-                });
-                gsap.to('.input-card', {
-                    duration: 7,
-                    rotateY: 7,
-                    rotateX: 3,
-                    rotateZ: 2,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
-                });
-            }
-
-            initParticles() {
-                const ctx = this.particleCanvas.getContext('2d');
-                this.resizeCanvas();
-
-                for (let i = 0; i < 250; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.particleCanvas.width,
-                        y: Math.random() * this.particleCanvas.height,
-                        radius: Math.random() * 4 + 1,
-                        speedX: (Math.random() - 0.5) * 3.5,
-                        speedY: (Math.random() - 0.5) * 3.5,
-                        opacity: Math.random() * 0.6 + 0.2,
-                        hue: Math.random() * 360,
-                        angle: Math.random() * Math.PI * 2,
-                        spin: Math.random() * 0.1 - 0.05
-                    });
-                }
-
-                const animateParticles = () => {
-                    ctx.clearRect(0, 0, this.particleCanvas.width, this.particleCanvas.height);
-                    ctx.strokeStyle = 'rgba(167, 139, 250, 0.2)';
-                    ctx.lineWidth = 2;
-
-                    this.particles.forEach(p => {
-                        p.x += p.speedX + Math.cos(p.angle) * 0.6;
-                        p.y += p.speedY + Math.sin(p.angle) * 0.6;
-                        p.angle += p.spin;
-                        p.hue = (p.hue + 0.7) % 360;
-
-                        if (p.x < 0 || p.x > this.particleCanvas.width) p.speedX *= -1;
-                        if (p.y < 0 || p.y > this.particleCanvas.height) p.speedY *= -1;
-
-                        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
-                        ctx.globalAlpha = p.opacity;
-                        ctx.save();
-                        ctx.translate(p.x, p.y);
-                        ctx.rotate(p.angle);
-                        ctx.beginPath();
-                        ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.restore();
-
-                        this.particles.forEach(p2 => {
-                            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                            if (dist < 120 && dist > 20) {
-                                ctx.beginPath();
-                                ctx.moveTo(p.x, p.y);
-                                ctx.lineTo(p2.x, p2.y);
-                                ctx.stroke();
-                            }
-                        });
-                    });
-
-                    ctx.globalAlpha = 1;
-                    requestAnimationFrame(animateParticles);
-                };
-
-                animateParticles();
-            }
-
-            resizeCanvas() {
-                this.particleCanvas.width = window.innerWidth;
-                this.particleCanvas.height = window.innerHeight;
+                gsap.from('.navbar', { duration: 1, y: -80, opacity: 0, ease: 'power2.out' });
+                gsap.from('.input-card', { duration: 1.2, y: 100, opacity: 0, ease: 'power2.out' });
+                gsap.from('.domain-input', { duration: 1, delay: 0.3, x: -80, opacity: 0, ease: 'power2.out' });
+                gsap.from('.action-buttons', { duration: 1, delay: 0.4, x: 80, opacity: 0, ease: 'power2.out' });
             }
 
             debounce(func, wait) {
                 let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
+                return (...args) => {
                     clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
+                    timeout = setTimeout(() => func(...args), wait);
                 };
             }
 
-            async updateBackground() {
+            updateBackground() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) {
                     this.backgroundOverlay.style.backgroundImage = 'none';
-                    gsap.to(this.backgroundOverlay, {
-                        opacity: 0.6,
-                        duration: 2.5,
-                        ease: 'power4.inOut'
-                    });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.5, duration: 1.5, ease: 'power2.inOut' });
                     return;
                 }
                 try {
-                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=512`;
-                    this.backgroundOverlay.style.backgroundImage = `url(${favicon}), linear-gradient(45deg, rgba(167, 139, 250, 0.1), transparent)`;
-                    gsap.to(this.backgroundOverlay, {
-                        opacity: 0.8,
-                        duration: 2.5,
-                        ease: 'power4.inOut'
-                    });
+                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=256`;
+                    this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
+                    gsap.to(this.backgroundOverlay, { opacity: 0.7, duration: 1.5, ease: 'power2.inOut' });
                 } catch {
                     this.backgroundOverlay.style.backgroundImage = 'none';
                 }
@@ -943,23 +635,15 @@
             updateSuggestions() {
                 const input = this.domainInput.value.toLowerCase();
                 const filtered = this.suggestions.filter(s => s.includes(input) && s !== input);
-                this.suggestionList.innerHTML = filtered.map(s => `
-                    <div class="suggestion-item" data-value="${s}">${s}</div>
-                `).join('');
+                this.suggestionList.innerHTML = filtered.map(s => `<div class="suggestion-item" data-value="${s}">${s}</div>`).join('');
                 this.suggestionList.style.display = filtered.length > 0 && input ? 'block' : 'none';
             }
 
-            showSuggestions() {
-                this.updateSuggestions();
-            }
-
-            hideSuggestions() {
-                this.suggestionList.style.display = 'none';
-            }
+            showSuggestions() { this.updateSuggestions(); }
+            hideSuggestions() { this.suggestionList.style.display = 'none'; }
 
             sanitizeDomain(input) {
                 let domain = input.trim().toLowerCase();
-                if (!domain) return '';
                 if (!domain.startsWith('http')) domain = `https://${domain}`;
                 return this.validUrlRegex.test(domain) ? domain : '';
             }
@@ -967,32 +651,19 @@
             showError(message) {
                 this.errorMessage.textContent = message;
                 this.errorMessage.classList.add('show');
-                gsap.to(this.errorMessage, {
-                    opacity: 1,
-                    duration: 0.7,
-                    ease: 'power4.out'
-                });
+                gsap.to(this.errorMessage, { opacity: 1, duration: 0.5, ease: 'power2.out' });
                 setTimeout(() => {
-                    gsap.to(this.errorMessage, {
-                        opacity: 0,
-                        duration: 0.7,
-                        ease: 'power4.in',
-                        onComplete: () => this.errorMessage.classList.remove('show')
-                    });
-                }, 6000);
+                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.5, ease: 'power2.in', onComplete: () => this.errorMessage.classList.remove('show') });
+                }, 5000);
             }
 
             toggleHistoryPanel() {
                 this.historyPanel.classList.toggle('open');
-                gsap.to(this.historyPanel, {
-                    right: this.historyPanel.classList.contains('open') ? 0 : -450,
-                    duration: 0.7,
-                    ease: 'power4.inOut'
-                });
+                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -350, duration: 0.5, ease: 'power2.inOut' });
             }
 
             renderHistory() {
-                this.historyList.innerHTML = this.history.slice(0, 15).map(domain => `
+                this.historyList.innerHTML = this.history.slice(0, 10).map(domain => `
                     <div class="history-item" data-domain="${domain}">
                         <p>${domain}</p>
                         <button class="delete-btn"><i class="fas fa-times"></i></button>
@@ -1003,7 +674,7 @@
             saveToHistory(domain) {
                 if (!this.history.includes(domain)) {
                     this.history.unshift(domain);
-                    this.history = this.history.slice(0, 75);
+                    this.history = this.history.slice(0, 50);
                     localStorage.setItem('domainHistory', JSON.stringify(this.history));
                     this.renderHistory();
                 }
@@ -1019,401 +690,162 @@
                 this.domainInput.value = '';
                 this.updateBackground();
                 this.hideSuggestions();
-                gsap.to(this.domainInput, {
-                    scale: 0.95,
-                    duration: 0.5,
-                    ease: 'power4.in',
-                    yoyo: true,
-                    repeat: 1
-                });
+                gsap.to(this.domainInput, { scale: 0.95, duration: 0.3, ease: 'power2.in', yoyo: true, repeat: 1 });
             }
 
             showPermissionModal() {
                 this.permissionModal.classList.add('show');
-                gsap.fromTo(this.permissionModal.querySelector('.modal-content'), {
-                    scale: 0.6,
-                    opacity: 0,
-                    rotateX: -30,
-                    rotateY: 20
-                }, {
-                    scale: 1,
-                    opacity: 1,
-                    rotateX: 0,
-                    rotateY: 0,
-                    duration: 0.8,
-                    ease: 'power4.out'
-                });
+                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.6, ease: 'power2.out' });
             }
 
             hidePermissionModal() {
-                gsap.to(this.permissionModal.querySelector('.modal-content'), {
-                    scale: 0.6,
-                    opacity: 0,
-                    rotateX: 30,
-                    rotateY: -20,
-                    duration: 0.8,
-                    ease: 'power4.in',
-                    onComplete: () => this.permissionModal.classList.remove('show')
-                });
+                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.6, ease: 'power2.in', onComplete: () => this.permissionModal.classList.remove('show') });
             }
 
-            async handleGrantPermission() {
-                try {
-                    const clipboardRead = await navigator.permissions.request({ name: 'clipboard-read' });
-                    const clipboardWrite = await navigator.permissions.request({ name: 'clipboard-write' });
-                    const geolocation = await navigator.permissions.request({ name: 'geolocation' });
-                    const notifications = await Notification.requestPermission();
-
-                    if (clipboardRead.state === 'granted' && clipboardWrite.state === 'granted' && geolocation.state === 'granted' && notifications === 'granted') {
-                        this.permissionsGranted = true;
-                        this.hidePermissionModal();
-                        this.showError('Permissions granted! All features activated.');
-                        if ('serviceWorker' in navigator) {
-                            navigator.serviceWorker.register('sw.js').then(registration => {
-                                registration.pushManager.subscribe({ userVisibleOnly: true }).then(subscription => {
-                                    console.log('Push subscription successful:', subscription);
-                                });
-                            }).catch(() => {});
-                        }
-                    } else {
-                        throw new Error('Not all permissions were granted. Some features may be limited.');
-                    }
-                } catch (error) {
-                    this.showError(`Permission error: ${error.message}`);
+            handleGrantPermission() {
+                if ('clipboard' in navigator && 'geolocation' in navigator) {
+                    this.permissionsGranted = true;
+                    this.hidePermissionModal();
+                    this.showError('Permissions granted! All features activated.');
+                    if ('Notification' in window) Notification.requestPermission();
+                } else {
+                    this.showError('Permission request not supported on this browser.');
                 }
             }
 
             createIframe(windowRef, url) {
                 const iframe = windowRef.document.createElement('iframe');
                 Object.assign(iframe.style, {
-                    position: 'fixed',
-                    width: '100vw',
-                    height: '100vh',
-                    top: '0',
-                    left: '0',
-                    zIndex: '2147483647',
-                    backgroundColor: 'white',
-                    border: 'none',
-                    transition: 'opacity 0.7s ease'
+                    position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0, zIndex: 2147483647,
+                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.5s ease'
                 });
                 iframe.src = url;
                 iframe.style.opacity = '0';
                 return iframe;
             }
 
-            async verifyIframeLoad(iframe) {
+            verifyIframeLoad(iframe) {
                 return new Promise((resolve, reject) => {
-                    iframe.onload = () => {
-                        gsap.to(iframe, {
-                            opacity: 1,
-                            duration: 0.7,
-                            ease: 'power4.out',
-                            onComplete: resolve
-                        });
-                    };
-                    iframe.onerror = () => reject(new Error('Failed to load website'));
-                    setTimeout(() => reject(new Error('Load timeout')), 30000);
+                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.5, ease: 'power2.out', onComplete: resolve });
+                    iframe.onerror = () => reject(new Error('Failed to load'));
+                    setTimeout(() => reject(new Error('Load timeout')), 20000);
                 });
             }
 
-            async handleViewWebsite() {
+            handleViewWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) {
-                    this.showError('Please enter a valid domain.');
-                    return;
-                }
-
-                try {
-                    const newWindow = window.open('', '_blank', 'width=1300,height=900');
-                    if (!newWindow) {
-                        throw new Error('Pop-up blocked. Please allow pop-ups.');
-                    }
-
-                    const iframe = this.createIframe(newWindow, domain);
-                    newWindow.document.body.appendChild(iframe);
-
-                    gsap.to(this.viewButton, {
-                        scale: 0.9,
-                        duration: 0.5,
-                        ease: 'power4.in',
-                        yoyo: true,
-                        repeat: 1
-                    });
-
-                    await this.verifyIframeLoad(iframe);
+                if (!domain) return this.showError('Enter a valid domain.');
+                const newWindow = window.open('', '_blank', 'width=1200,height=800');
+                if (!newWindow) return this.showError('Pop-up blocked.');
+                const iframe = this.createIframe(newWindow, domain);
+                newWindow.document.body.appendChild(iframe);
+                this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    this.viewButton.innerHTML = '<i class="fas fa-check"></i> Loaded!';
-                    gsap.to(this.viewButton, {
-                        backgroundColor: '#14b8a6',
-                        duration: 0.7,
-                        ease: 'power4.out'
-                    });
-                    setTimeout(() => {
-                        this.viewButton.innerHTML = '<i class="fas fa-globe"></i> View Website';
-                        gsap.to(this.viewButton, {
-                            backgroundColor: 'var(--primary)',
-                            duration: 0.7,
-                            ease: 'power4.out'
-                        });
-                    }, 3500);
-
+                    gsap.to(this.viewButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(domain).catch(() => {});
-                        const position = await new Promise((resolve, reject) => {
-                            navigator.geolocation.getCurrentPosition(resolve, reject);
-                        });
-                        this.showError(`Location accessed: Lat ${position.coords.latitude}, Lon ${position.coords.longitude}`);
-                        new Notification('Website Loaded', {
-                            body: `Successfully loaded ${domain} at ${new Date().toLocaleString()}`,
-                            icon: 'https://www.google.com/s2/favicons?domain=' + domain
-                        });
+                        navigator.geolocation.getCurrentPosition(pos => this.showError(`Location: ${pos.coords.latitude}, ${pos.coords.longitude}`));
+                        new Notification('Loaded', { body: `${domain} loaded`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                } catch (error) {
-                    this.showError(error.message);
-                }
+                }).catch(e => this.showError(e.message));
             }
 
-            async handleAnalyzeWebsite() {
+            handleAnalyzeWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) {
-                    this.showError('Please enter a valid domain to analyze.');
-                    return;
-                }
-
+                if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, {
-                    bottom: 0,
-                    duration: 0.7,
-                    ease: 'power4.inOut'
-                });
-
-                this.analysisContent.innerHTML = `
-                    <h3>Analyzing ${domain}</h3>
-                    <p>Evaluating safety and content...</p>
-                `;
-
-                try {
-                    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, {
-                        method: 'GET',
-                        mode: 'cors'
-                    });
-                    const data = await response.json();
-                    const htmlContent = data.contents;
-
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(htmlContent, 'text/html');
-
-                    const title = doc.querySelector('title')?.textContent || 'No title found';
-                    const metaDescription = doc.querySelector('meta[name="description"]')?.content || 'No description found';
-                    const linksCount = doc.querySelectorAll('a').length;
-                    const imagesCount = doc.querySelectorAll('img').length;
-                    const scriptsCount = doc.querySelectorAll('script').length;
-                    const headersCount = doc.querySelectorAll('h1, h2, h3, h4, h5, h6').length;
-                    const hasHTTPS = domain.startsWith('https://');
-                    const hasMaliciousKeywords = ['malware', 'virus', 'hack', 'phishing'].some(keyword => htmlContent.toLowerCase().includes(keyword));
-                    const safetyScore = Math.min(100, Math.max(0, 100 - (scriptsCount * 5 + (hasMaliciousKeywords ? 30 : 0) + (linksCount > 50 ? 10 : 0) + (imagesCount > 20 ? 5 : 0) - (hasHTTPS ? 20 : 0))));
-                    const isSafe = safetyScore > 70;
-
-                    let analysisHTML = `
-                        <h3>Analysis for ${domain}</h3>
-                        <p><strong>Title:</strong> ${title}</p>
-                        <p><strong>Meta Description:</strong> ${metaDescription}</p>
-                        <p><strong>Number of Links:</strong> ${linksCount}</p>
-                        <p><strong>Number of Images:</strong> ${imagesCount}</p>
-                        <p><strong>Number of Scripts:</strong> ${scriptsCount}</p>
-                        <p><strong>Number of Headers:</strong> ${headersCount}</p>
-                        <p><strong>Uses HTTPS:</strong> ${hasHTTPS ? 'Yes' : 'No'}</p>
-                        <p><strong>Safety Score:</strong> ${safetyScore}%</p>
-                        <p><strong>Recommendation:</strong> ${isSafe ? 'Safe to open' : 'Potentially unsafe, proceed with caution'}</p>
-                    `;
-
-                    if (this.permissionsGranted) {
-                        const position = await new Promise((resolve, reject) => {
-                            navigator.geolocation.getCurrentPosition(resolve, reject);
-                        });
-                        analysisHTML += `
-                            <p><strong>User Location:</strong> Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}</p>
-                            <p><strong>Analysis Time:</strong> ${new Date().toLocaleString()}</p>
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Evaluating safety...</p>';
+                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                    .then(r => r.json()).then(d => {
+                        const doc = new DOMParser().parseFromString(d.contents, 'text/html');
+                        const title = doc.querySelector('title')?.textContent || 'No title';
+                        const links = doc.querySelectorAll('a').length;
+                        const scripts = doc.querySelectorAll('script').length;
+                        const hasHTTPS = domain.startsWith('https://');
+                        const safety = 100 - (scripts * 5 + (links > 50 ? 10 : 0) - (hasHTTPS ? 20 : 0));
+                        const isSafe = safety > 70;
+                        this.analysisContent.innerHTML = `
+                            <h3>${domain}</h3>
+                            <p>Title: ${title}</p>
+                            <p>Links: ${links}</p>
+                            <p>Scripts: ${scripts}</p>
+                            <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
+                            <p>Safety: ${safety}% - ${isSafe ? 'Safe' : 'Caution'}</p>
                         `;
-                    }
-
-                    this.analysisContent.innerHTML = analysisHTML;
-                    if (!isSafe) this.showError('Warning: This website may be unsafe. Proceed with caution.');
-                } catch (error) {
-                    this.analysisContent.innerHTML = `
-                        <h3>Analysis Failed</h3>
-                        <p>Unable to analyze ${domain}. Error: ${error.message}</p>
-                    `;
-                    this.showError('Analysis failed. Please try again.');
-                }
+                        if (!isSafe) this.showError('Potentially unsafe.');
+                    }).catch(e => {
+                        this.analysisContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
+                        this.showError('Analysis failed.');
+                    });
             }
 
-            async handleSecurityScan() {
+            handleSecurityScan() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) {
-                    this.showError('Please enter a valid domain to scan.');
-                    return;
-                }
-
+                if (!domain) return this.showError('Enter a valid domain.');
                 this.securityPanel.classList.add('open');
-                gsap.to(this.securityPanel, {
-                    top: 80,
-                    duration: 0.7,
-                    ease: 'power4.inOut'
-                });
-
-                this.securityContent.innerHTML = `
-                    <h3>Security Scan for ${domain}</h3>
-                    <p>Performing in-depth security check...</p>
-                `;
-
-                try {
-                    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, {
-                        method: 'GET',
-                        mode: 'cors'
-                    });
-                    const data = await response.json();
-                    const htmlContent = data.contents;
-
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(htmlContent, 'text/html');
-
-                    const hasHTTPS = domain.startsWith('https://');
-                    const formCount = doc.querySelectorAll('form').length;
-                    const inputCount = doc.querySelectorAll('input').length;
-                    const scriptSources = Array.from(doc.querySelectorAll('script[src]')).map(s => s.src);
-                    const potentialRisks = scriptSources.filter(src => src.includes('unknown') || src.includes('ad') || src.includes('track'));
-                    const cookieCount = document.cookie.split(';').length;
-                    const securityScore = Math.min(100, Math.max(0, 100 - (formCount * 5 + inputCount * 2 + (potentialRisks.length * 10) + (cookieCount > 5 ? 15 : 0) - (hasHTTPS ? 25 : 0))));
-
-                    let securityHTML = `
-                        <h3>Security Scan Results for ${domain}</h3>
-                        <p><strong>Uses HTTPS:</strong> ${hasHTTPS ? 'Yes' : 'No'}</p>
-                        <p><strong>Number of Forms:</strong> ${formCount}</p>
-                        <p><strong>Number of Inputs:</strong> ${inputCount}</p>
-                        <p><strong>Script Sources:</strong> ${scriptSources.length > 0 ? scriptSources.join(', ') : 'None'}</p>
-                        <p><strong>Potential Risks:</strong> ${potentialRisks.length > 0 ? potentialRisks.join(', ') : 'None detected'}</p>
-                        <p><strong>Cookie Count:</strong> ${cookieCount}</p>
-                        <p><strong>Security Score:</strong> ${securityScore}%</p>
-                    `;
-
-                    if (this.permissionsGranted) {
-                        const position = await new Promise((resolve, reject) => {
-                            navigator.geolocation.getCurrentPosition(resolve, reject);
-                        });
-                        securityHTML += `
-                            <p><strong>Scan Location:</strong> Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}</p>
+                gsap.to(this.securityPanel, { top: 60, duration: 0.5, ease: 'power2.inOut' });
+                this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Checking security...</p>';
+                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                    .then(r => r.json()).then(d => {
+                        const doc = new DOMParser().parseFromString(d.contents, 'text/html');
+                        const hasHTTPS = domain.startsWith('https://');
+                        const forms = doc.querySelectorAll('form').length;
+                        const inputs = doc.querySelectorAll('input').length;
+                        const security = 100 - (forms * 5 + inputs * 2 - (hasHTTPS ? 25 : 0));
+                        this.securityContent.innerHTML = `
+                            <h3>${domain}</h3>
+                            <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
+                            <p>Forms: ${forms}</p>
+                            <p>Inputs: ${inputs}</p>
+                            <p>Security: ${security}%</p>
                         `;
-                    }
-
-                    this.securityContent.innerHTML = securityHTML;
-                    if (securityScore < 70) this.showError('Warning: This website may pose security risks.');
-                } catch (error) {
-                    this.securityContent.innerHTML = `
-                        <h3>Security Scan Failed</h3>
-                        <p>Unable to scan ${domain}. Error: ${error.message}</p>
-                    `;
-                    this.showError('Security scan failed. Please try again.');
-                }
+                        if (security < 70) this.showError('Possible security risks.');
+                    }).catch(e => {
+                        this.securityContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
+                        this.showError('Scan failed.');
+                    });
             }
 
-            async handleUnblockWebsite() {
+            handleAccessWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) {
-                    this.showError('Please enter a valid domain to unblock.');
-                    return;
-                }
-
-                try {
-                    const proxyIndex = Math.floor(Math.random() * this.proxyChain.length);
-                    const proxy = this.proxyChain[proxyIndex];
-                    const encodedDomain = btoa(domain).split('').reverse().join('');
-                    const obfuscatedUrl = `${proxy}${encodeURIComponent(this.xorEncrypt(encodedDomain, this.encryptionKey))}&t=${Date.now()}`;
-                    const dynamicPorts = [8080, 443, 8443, 9443];
-                    const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                    const randomSubdomain = `x${Math.random().toString(36).substr(2, 8)}`;
-                    const multiLayerUrl = `https://${randomSubdomain}.proxy${port}.org/${obfuscatedUrl}#${btoa(Math.random().toString(36))}`;
-
-                    const newWindow = window.open('', '_blank', 'width=1400,height=1000');
-                    if (!newWindow) {
-                        throw new Error('Pop-up blocked. Please allow pop-ups.');
-                    }
-
-                    const iframe = this.createIframe(newWindow, multiLayerUrl);
-                    newWindow.document.body.appendChild(iframe);
-
-                    gsap.to(this.unblockButton, {
-                        scale: 0.9,
-                        duration: 0.5,
-                        ease: 'power4.in',
-                        yoyo: true,
-                        repeat: 1
-                    });
-
-                    await this.verifyIframeLoad(iframe);
+                if (!domain) return this.showError('Enter a valid domain.');
+                const proxy = this.proxyChain[Math.floor(Math.random() * this.proxyChain.length)];
+                const encoded = btoa(domain).split('').reverse().join('');
+                const url = `${proxy}${encodeURIComponent(this.xorEncrypt(encoded, this.encryptionKey))}&t=${Date.now()}`;
+                const newWindow = window.open('', '_blank', 'width=1200,height=800');
+                if (!newWindow) return this.showError('Pop-up blocked.');
+                const iframe = this.createIframe(newWindow, url);
+                newWindow.document.body.appendChild(iframe);
+                this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    this.unblockButton.innerHTML = '<i class="fas fa-check"></i> Unblocked!';
-                    gsap.to(this.unblockButton, {
-                        backgroundColor: '#10b981',
-                        duration: 0.7,
-                        ease: 'power4.out'
-                    });
-                    setTimeout(() => {
-                        this.unblockButton.innerHTML = '<i class="fas fa-unlock"></i> Unblock';
-                        gsap.to(this.unblockButton, {
-                            backgroundColor: 'var(--primary)',
-                            duration: 0.7,
-                            ease: 'power4.out'
-                        });
-                    }, 4000);
-
+                    gsap.to(this.accessButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(domain).catch(() => {});
-                        const position = await new Promise((resolve, reject) => {
-                            navigator.geolocation.getCurrentPosition(resolve, reject);
-                        });
-                        this.showError(`Unblocked from: Lat ${position.coords.latitude}, Lon ${position.coords.longitude}`);
-                        new Notification('Website Unblocked', {
-                            body: `Successfully unblocked ${domain} at ${new Date().toLocaleString()}`,
-                            icon: 'https://www.google.com/s2/favicons?domain=' + domain
-                        });
+                        navigator.geolocation.getCurrentPosition(pos => this.showError(`Accessed from: ${pos.coords.latitude}, ${pos.coords.longitude}`));
+                        new Notification('Accessed', { body: `${domain} accessed`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                } catch (error) {
-                    this.showError(`Unblock failed: ${error.message}. Retrying with alternate method...`);
-                    await this.retryUnblock(domain);
-                }
+                }).catch(e => this.showError(`Access failed: ${e.message}`));
             }
 
             xorEncrypt(text, key) {
-                return text.split('').map((char, i) => {
-                    const keyChar = key[i % key.length];
-                    return String.fromCharCode(char.charCodeAt(0) ^ keyChar.charCodeAt(0));
-                }).join('');
+                return text.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ key[i % key.length].charCodeAt(0))).join('');
             }
 
-            async retryUnblock(domain) {
-                try {
-                    const proxyIndex = (proxyIndex + 1) % this.proxyChain.length;
-                    const proxy = this.proxyChain[proxyIndex];
-                    const timestamp = Date.now().toString(36);
-                    const randomToken = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
-                    const obfuscatedDomain = this.xorEncrypt(btoa(domain.split('').reverse().join('')), this.encryptionKey + randomToken);
-                    const dynamicPath = `/v${Math.floor(Math.random() * 1000)}/p${Math.floor(Math.random() * 999)}`;
-                    const multiProxyUrl = `${proxy}${encodeURIComponent(obfuscatedDomain)}${dynamicPath}?r=${btoa(randomToken)}&t=${timestamp}`;
-
-                    const newWindow = window.open('', '_blank', 'width=1400,height=1000');
-                    if (!newWindow) {
-                        throw new Error('Pop-up blocked. Please allow pop-ups.');
-                    }
-
-                    const iframe = this.createIframe(newWindow, multiProxyUrl);
-                    newWindow.document.body.appendChild(iframe);
-
-                    await this.verifyIframeLoad(iframe);
-                    this.saveToHistory(domain);
-                } catch (error) {
-                    this.showError(`Unblock retry failed: ${error.message}. Please check your connection.`);
-                }
+            handleFetchCode() {
+                const domain = this.sanitizeDomain(this.domainInput.value);
+                if (!domain) return this.showError('Enter a valid domain.');
+                this.analysisPanel.classList.add('open');
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code...</p>';
+                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                    .then(r => r.json()).then(d => {
+                        const code = d.contents.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
+                        this.analysisContent.innerHTML = `<h3>${domain} Code</h3><pre>${code}</pre>`;
+                    }).catch(e => {
+                        this.analysisContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
+                        this.showError('Code fetch failed.');
+                    });
             }
         }
 
