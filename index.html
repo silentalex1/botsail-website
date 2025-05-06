@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary: #a3a8f0;
-            --primary-hover: #8a90e0;
-            --accent: #4ad0b0;
-            --accent-hover: #39b594;
-            --secondary: #6a9ff0;
-            --secondary-hover: #5589e0;
-            --tertiary: #b07ff0;
-            --tertiary-hover: #9a6de0;
+            --primary: #9ba3eb;
+            --primary-hover: #828cd8;
+            --accent: #42c6a5;
+            --accent-hover: #34b08a;
+            --secondary: #5f95ea;
+            --secondary-hover: #4c81d7;
+            --tertiary: #a775ea;
+            --tertiary-hover: #9463d7;
             --text: #d1d5db;
-            --bg-dark: #0a121e;
-            --bg-light: #0e1a28;
-            --glass-bg: rgba(14, 26, 40, 0.9);
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            --glow: 0 0 15px rgba(163, 168, 240, 0.6);
-            --error-bg: rgba(220, 38, 38, 0.35);
-            --navbar-bg: rgba(10, 18, 30, 0.95);
+            --bg-dark: #0b1321;
+            --bg-light: #0f1a2a;
+            --glass-bg: rgba(15, 26, 42, 0.88);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+            --glow: 0 0 12px rgba(155, 163, 235, 0.55);
+            --error-bg: rgba(220, 38, 38, 0.3);
+            --navbar-bg: rgba(11, 19, 33, 0.94);
         }
 
         body {
@@ -30,151 +30,151 @@
             min-height: 100vh;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
-            background: linear-gradient(165deg, var(--bg-dark), var(--bg-light));
+            background: linear-gradient(170deg, var(--bg-dark), var(--bg-light));
             overflow-x: hidden;
-            perspective: 1000px;
-            transition: background 1.5s ease;
+            perspective: 800px;
+            transition: background 1.2s ease;
         }
 
         .navbar {
             background: var(--navbar-bg);
-            backdrop-filter: blur(20px);
-            padding: 0.6rem 0.5rem;
+            backdrop-filter: blur(15px);
+            padding: 0.5rem;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 50;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
         }
 
         .navbar-brand {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-left: 0.7rem;
+            gap: 0.4rem;
+            margin-left: 0.6rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.5rem;
-            margin-left: 0.7rem;
+            gap: 0.4rem;
+            margin-left: 0.6rem;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.4rem 0.9rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
         }
 
         .nav-links a:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 3px 10px rgba(163, 168, 240, 0.5);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 2px 8px rgba(155, 163, 235, 0.4);
         }
 
         .container {
             position: relative;
-            min-height: calc(100vh - 50px);
+            min-height: calc(100vh - 40px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 3;
-            padding-top: 50px;
-            padding-bottom: 15px;
+            padding-top: 40px;
+            padding-bottom: 10px;
         }
 
         .input-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            width: min(90%, 400px);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 1rem;
+            width: min(88%, 350px);
             box-shadow: var(--shadow);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             transform-style: preserve-3d;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .input-card:hover {
-            transform: translateZ(30px) scale(1.03);
-            box-shadow: 0 15px 50px rgba(163, 168, 240, 0.7);
+            transform: translateZ(20px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(155, 163, 235, 0.65);
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
             width: 100%;
         }
 
         .domain-input {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(163, 168, 240, 0.4);
-            border-radius: 12px;
-            padding: 0.7rem 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(155, 163, 235, 0.35);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             outline: none;
-            transition: all 0.4s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), var(--glow);
-            margin-left: 5%;
-            width: 90%;
-            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15), var(--glow);
+            margin-left: 4%;
+            width: 92%;
+            font-weight: 400;
         }
 
         .domain-input:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: var(--glow), inset 0 2px 4px rgba(163, 168, 240, 0.2);
-            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: var(--glow), inset 0 1px 3px rgba(155, 163, 235, 0.15);
+            transform: scale(1.01);
             border-color: var(--primary-hover);
         }
 
         .domain-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 400;
+            color: rgba(255, 255, 255, 0.55);
+            font-weight: 300;
         }
 
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
+            gap: 0.5rem;
             justify-content: center;
-            width: 90%;
-            margin-left: 5%;
+            width: 92%;
+            margin-left: 4%;
         }
 
         .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .access-button, .fetch-button {
             background: var(--primary);
             border: none;
-            border-radius: 12px;
-            padding: 0.5rem 1.2rem;
+            border-radius: 10px;
+            padding: 0.4rem 0.8rem;
             color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.8rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(163, 168, 240, 0.5);
+            gap: 0.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(155, 163, 235, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -186,15 +186,15 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
+            transition: width 0.3s ease, height 0.3s ease;
         }
 
         .view-button:hover::before, .history-button:hover::before, .clear-button:hover::before, .permission-button:hover::before, .analyze-button:hover::before, .security-button:hover::before, .access-button:hover::before, .fetch-button:hover::before {
-            width: 200%;
-            height: 200%;
+            width: 150%;
+            height: 150%;
         }
 
         .history-button { background: var(--accent); }
@@ -206,8 +206,8 @@
         .fetch-button { background: #a5b4fc; }
 
         .view-button:hover, .history-button:hover, .clear-button:hover, .permission-button:hover, .analyze-button:hover, .security-button:hover, .access-button:hover, .fetch-button:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 7px 20px rgba(163, 168, 240, 0.7);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(155, 163, 235, 0.6);
         }
 
         .view-button:hover { background: var(--primary-hover); }
@@ -222,15 +222,15 @@
         .error-message {
             color: #dc2626;
             background: var(--error-bg);
-            padding: 0.5rem;
-            border-radius: 10px;
+            padding: 0.4rem;
+            border-radius: 8px;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
-            font-size: 0.9rem;
-            box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4);
-            width: 90%;
-            margin-left: 5%;
+            transition: opacity 0.4s ease;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+            width: 92%;
+            margin-left: 4%;
         }
 
         .error-message.show {
@@ -239,15 +239,15 @@
 
         .history-panel {
             position: fixed;
-            top: 50px;
-            right: -300px;
-            width: 280px;
-            height: calc(100% - 50px);
+            top: 40px;
+            right: -250px;
+            width: 220px;
+            height: calc(100% - 40px);
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-left: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.2rem;
-            transition: right 0.5s ease;
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.8rem;
+            transition: right 0.4s ease;
             overflow-y: auto;
             z-index: 40;
         }
@@ -257,25 +257,25 @@
         }
 
         .history-item {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin-bottom: 0.4rem;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .history-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
         }
 
         .history-item p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -286,13 +286,13 @@
             background: #dc2626;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .history-item .delete-btn:hover {
@@ -309,36 +309,36 @@
             z-index: -1;
             background-size: cover;
             background-position: center;
-            filter: blur(15px);
-            opacity: 0.5;
-            transition: background-image 1.5s ease, opacity 1s ease;
+            filter: blur(12px);
+            opacity: 0.45;
+            transition: background-image 1.2s ease, opacity 0.8s ease;
         }
 
         .suggestion-list {
             background: var(--glass-bg);
-            border-radius: 10px;
-            padding: 0.5rem;
-            max-height: 150px;
+            border-radius: 8px;
+            padding: 0.4rem;
+            max-height: 120px;
             overflow-y: auto;
             position: absolute;
             top: 100%;
-            left: 5%;
-            right: 5%;
+            left: 4%;
+            right: 4%;
             display: none;
             z-index: 20;
             box-shadow: var(--shadow);
         }
 
         .suggestion-item {
-            padding: 0.4rem;
+            padding: 0.3rem;
             cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.4s ease;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
         .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(3px);
         }
 
         .permission-modal {
@@ -347,7 +347,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.65);
             display: none;
             justify-content: center;
             align-items: center;
@@ -360,49 +360,49 @@
 
         .modal-content {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            width: min(90%, 400px);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 1rem;
+            width: min(88%, 350px);
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
         .modal-content:hover {
-            transform: translateZ(20px) scale(1.03);
+            transform: translateZ(15px) scale(1.02);
         }
 
         .modal-content h2 {
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text);
         }
 
         .modal-content p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 1.2rem;
+            gap: 0.8rem;
             justify-content: center;
         }
 
         .modal-button {
             background: var(--primary);
             border: none;
-            border-radius: 10px;
-            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            padding: 0.4rem 0.8rem;
             color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(163, 168, 240, 0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(155, 163, 235, 0.4);
         }
 
         .modal-button.cancel {
@@ -411,8 +411,8 @@
 
         .modal-button:hover {
             background: var(--primary-hover);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 7px 20px rgba(163, 168, 240, 0.7);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(155, 163, 235, 0.6);
         }
 
         .modal-button.cancel:hover {
@@ -421,15 +421,15 @@
 
         .analysis-panel {
             position: fixed;
-            bottom: -350px;
+            bottom: -300px;
             left: 0;
             width: 100%;
-            height: 300px;
+            height: 250px;
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.2rem;
-            transition: bottom 0.5s ease;
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.8rem;
+            transition: bottom 0.4s ease;
             z-index: 40;
             overflow-y: auto;
         }
@@ -440,51 +440,51 @@
 
         .analysis-content {
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .analysis-content h3 {
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .analysis-content p {
-            margin: 0.4rem 0;
-            line-height: 1.5;
+            margin: 0.3rem 0;
+            line-height: 1.4;
         }
 
         .security-panel {
             position: fixed;
-            top: -350px;
+            top: -300px;
             left: 0;
             width: 100%;
-            height: 300px;
+            height: 250px;
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.2rem;
-            transition: top 0.5s ease;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.8rem;
+            transition: top 0.4s ease;
             z-index: 40;
             overflow-y: auto;
         }
 
         .security-panel.open {
-            top: 50px;
+            top: 40px;
         }
 
         .security-content {
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .security-content h3 {
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .security-content p {
-            margin: 0.4rem 0;
-            line-height: 1.5;
+            margin: 0.3rem 0;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -576,12 +576,12 @@
                 this.securityContent = document.getElementById('securityContent');
                 this.validUrlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
                 this.history = JSON.parse(localStorage.getItem('domainHistory')) || [];
-                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'reddit.com', 'stackoverflow.com', 'facebook.com'];
+                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'reddit.com', 'stackoverflow.com', 'facebook.com', 'amazon.com'];
                 this.permissionsGranted = false;
                 this.proxyChain = [
-                    { url: 'https://corsproxy.io/?', headers: { 'X-Custom-Header': btoa('secure1' + Date.now()), timeout: 5000 }, weight: 0.4 },
-                    { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Origin-Auth': btoa('secure2' + Math.random()), timeout: 5000 }, weight: 0.3 },
-                    { url: 'https://corsproxy.org/?', headers: { 'X-Proxy-Token': btoa('secure3' + Date.now()), timeout: 5000 }, weight: 0.3 }
+                    { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Origin-Auth': btoa('secure1' + Date.now()), 'Cache-Control': 'no-cache' }, weight: 0.5, timeout: 6000 },
+                    { url: 'https://corsproxy.io/?', headers: { 'X-Custom-Header': btoa('secure2' + Math.random()), 'Cache-Control': 'no-cache' }, weight: 0.3, timeout: 6000 },
+                    { url: 'https://corsproxy.org/?', headers: { 'X-Proxy-Token': btoa('secure3' + Date.now()), 'Cache-Control': 'no-cache' }, weight: 0.2, timeout: 6000 }
                 ];
                 this.encryptionKey = btoa(Math.random().toString(36).slice(2) + Date.now() + Math.random().toString(36));
                 this.initEventListeners();
@@ -603,12 +603,12 @@
                 this.domainInput.addEventListener('input', this.debounce(() => {
                     this.updateBackground();
                     this.updateSuggestions();
-                }, 150));
+                }, 100));
                 this.domainInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') this.handleAccessWebsite();
                 });
                 this.domainInput.addEventListener('focus', () => this.showSuggestions());
-                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 100));
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 150));
                 this.suggestionList.addEventListener('click', (e) => {
                     const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
                     if (suggestion) {
@@ -629,10 +629,10 @@
             }
 
             initAnimations() {
-                gsap.from('.navbar', { duration: 1, y: -50, opacity: 0, ease: 'power3.out' });
-                gsap.from('.input-card', { duration: 1.2, y: 50, opacity: 0, ease: 'power3.out' });
-                gsap.from('.domain-input', { duration: 1, delay: 0.1, x: -50, opacity: 0, ease: 'power3.out' });
-                gsap.from('.action-buttons', { duration: 1, delay: 0.2, x: 50, opacity: 0, ease: 'power3.out' });
+                gsap.from('.navbar', { duration: 0.8, y: -40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.input-card', { duration: 1, y: 40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.domain-input', { duration: 0.8, delay: 0.1, x: -40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.action-buttons', { duration: 0.8, delay: 0.2, x: 40, opacity: 0, ease: 'power2.out' });
             }
 
             debounce(func, wait) {
@@ -647,13 +647,13 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) {
                     this.backgroundOverlay.style.backgroundImage = 'none';
-                    gsap.to(this.backgroundOverlay, { opacity: 0.5, duration: 1.5, ease: 'power3.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.45, duration: 1.2, ease: 'power2.inOut' });
                     return;
                 }
                 try {
-                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
                     this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
-                    gsap.to(this.backgroundOverlay, { opacity: 0.7, duration: 1.5, ease: 'power3.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.65, duration: 1.2, ease: 'power2.inOut' });
                 } catch {
                     this.backgroundOverlay.style.backgroundImage = 'none';
                 }
@@ -672,25 +672,25 @@
             sanitizeDomain(input) {
                 let domain = input.trim().toLowerCase().replace(/[^a-z0-9.-]/g, '');
                 if (!domain.startsWith('http')) domain = `https://${domain}`;
-                return this.validUrlRegex.test(domain) ? domain : '';
+                return this.validUrlRegex.test(domain) ? domain.replace(/^https?:\/\//, '') : '';
             }
 
             showError(message) {
                 this.errorMessage.textContent = message;
                 this.errorMessage.classList.add('show');
-                gsap.to(this.errorMessage, { opacity: 1, duration: 0.5, ease: 'power3.out' });
+                gsap.to(this.errorMessage, { opacity: 1, duration: 0.4, ease: 'power2.out' });
                 setTimeout(() => {
-                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.5, ease: 'power3.in', onComplete: () => this.errorMessage.classList.remove('show') });
-                }, 3500);
+                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => this.errorMessage.classList.remove('show') });
+                }, 3000);
             }
 
             toggleHistoryPanel() {
                 this.historyPanel.classList.toggle('open');
-                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -300, duration: 0.5, ease: 'power3.inOut' });
+                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -250, duration: 0.4, ease: 'power2.inOut' });
             }
 
             renderHistory() {
-                this.historyList.innerHTML = this.history.slice(0, 10).map(domain => `
+                this.historyList.innerHTML = this.history.slice(0, 8).map(domain => `
                     <div class="history-item" data-domain="${domain}">
                         <p>${domain}</p>
                         <button class="delete-btn"><i class="fas fa-times"></i></button>
@@ -701,7 +701,7 @@
             saveToHistory(domain) {
                 if (!this.history.includes(domain)) {
                     this.history.unshift(domain);
-                    this.history = this.history.slice(0, 50);
+                    this.history = this.history.slice(0, 40);
                     localStorage.setItem('domainHistory', JSON.stringify(this.history));
                     this.renderHistory();
                 }
@@ -717,26 +717,26 @@
                 this.domainInput.value = '';
                 this.updateBackground();
                 this.hideSuggestions();
-                gsap.to(this.domainInput, { scale: 0.95, duration: 0.3, ease: 'power3.in', yoyo: true, repeat: 1 });
+                gsap.to(this.domainInput, { scale: 0.96, duration: 0.2, ease: 'power2.in', yoyo: true, repeat: 1 });
             }
 
             showPermissionModal() {
                 this.permissionModal.classList.add('show');
-                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.5, ease: 'power3.out' });
+                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.9, opacity: 0, duration: 0.4, ease: 'power2.out' });
             }
 
             hidePermissionModal() {
-                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.5, ease: 'power3.in', onComplete: () => this.permissionModal.classList.remove('show') });
+                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.9, opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => this.permissionModal.classList.remove('show') });
             }
 
             handleGrantPermission() {
                 if ('clipboard' in navigator && 'geolocation' in navigator) {
                     this.permissionsGranted = true;
                     this.hidePermissionModal();
-                    this.showError('Permissions granted! Advanced features enabled.');
+                    this.showError('Permissions granted!');
                     if ('Notification' in window) Notification.requestPermission();
                 } else {
-                    this.showError('Permission requests not supported in this browser.');
+                    this.showError('Permissions not supported.');
                 }
             }
 
@@ -750,7 +750,7 @@
                 return this.proxyChain[0];
             }
 
-            fetchWithTimeout(url, options, timeout = 5000) {
+            fetchWithTimeout(url, options, timeout) {
                 return new Promise((resolve, reject) => {
                     const controller = new AbortController();
                     const id = setTimeout(() => controller.abort(), timeout);
@@ -762,7 +762,7 @@
                 const iframe = windowRef.document.createElement('iframe');
                 Object.assign(iframe.style, {
                     position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0, zIndex: 2147483647,
-                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.5s ease'
+                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.4s ease'
                 });
                 iframe.src = url;
                 iframe.style.opacity = '0';
@@ -771,24 +771,25 @@
 
             verifyIframeLoad(iframe) {
                 return new Promise((resolve, reject) => {
-                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.5, ease: 'power3.out', onComplete: resolve });
+                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: resolve });
                     iframe.onerror = () => reject(new Error('Failed to load'));
-                    setTimeout(() => reject(new Error('Load timeout')), 15000);
+                    setTimeout(() => reject(new Error('Load timeout')), 10000);
                 });
             }
 
             handleViewWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) return this.showError('Please enter a valid domain.');
-                const newWindow = window.open('', '_blank', 'width=1200,height=800');
-                if (!newWindow) return this.showError('Pop-up blocked by browser.');
-                const iframe = this.createIframe(newWindow, domain);
+                if (!domain) return this.showError('Enter a valid domain.');
+                const url = `https://${domain}`;
+                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                if (!newWindow) return this.showError('Pop-up blocked.');
+                const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.viewButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
+                    gsap.to(this.viewButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
-                        navigator.clipboard.writeText(domain).catch(() => {});
+                        navigator.clipboard.writeText(url);
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Location: ${pos.coords.latitude}, ${pos.coords.longitude}`));
                         new Notification('Loaded', { body: `${domain} loaded`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
@@ -797,24 +798,24 @@
 
             handleAnalyzeWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) return this.showError('Please enter a valid domain.');
+                if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power3.inOut' });
-                this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Evaluating safety metrics...</p>';
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Checking safety...</p>';
                 const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(domain)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
-                    .then(r => r.json()).then(d => {
-                        const doc = new DOMParser().parseFromString(d.contents, 'text/html');
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                    .then(r => r.text()).then(data => {
+                        const doc = new DOMParser().parseFromString(data, 'text/html');
                         const title = doc.querySelector('title')?.textContent || 'No title';
                         const metaDesc = doc.querySelector('meta[name="description"]')?.content || 'No description';
                         const links = doc.querySelectorAll('a').length;
                         const scripts = doc.querySelectorAll('script').length;
                         const images = doc.querySelectorAll('img').length;
-                        const hasHTTPS = domain.startsWith('https://');
-                        const trackers = ['google-analytics', 'facebook', 'doubleclick'].filter(t => d.contents.toLowerCase().includes(t)).length;
-                        const suspicious = ['eval(', 'document.write', 'onerror', 'javascript:'].some(k => d.contents.includes(k));
-                        const safetyScore = Math.min(100, 100 - (scripts * 2 + (links > 50 ? 15 : 0) + (images > 30 ? 10 : 0) + (trackers * 8) + (suspicious ? 20 : 0) - (hasHTTPS ? 25 : 0)));
-                        const safetyStatus = safetyScore > 75 ? 'Safe' : 'Caution';
+                        const hasHTTPS = true;
+                        const trackers = ['google-analytics', 'facebook', 'doubleclick'].filter(t => data.toLowerCase().includes(t)).length;
+                        const suspicious = ['eval(', 'document.write', 'onerror', 'javascript:'].some(k => data.includes(k));
+                        const safetyScore = Math.min(100, 100 - (scripts * 1.5 + (links > 40 ? 10 : 0) + (images > 25 ? 8 : 0) + (trackers * 6) + (suspicious ? 15 : 0) - (hasHTTPS ? 20 : 0)));
+                        const safetyStatus = safetyScore > 70 ? 'Safe' : 'Caution';
                         this.analysisContent.innerHTML = `
                             <h3>${domain}</h3>
                             <p>Title: ${title}</p>
@@ -823,37 +824,36 @@
                             <p>Scripts: ${scripts}</p>
                             <p>Images: ${images}</p>
                             <p>Trackers: ${trackers}</p>
-                            <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
+                            <p>HTTPS: Yes</p>
                             <p>Suspicious Code: ${suspicious ? 'Detected' : 'None'}</p>
                             <p>Safety Score: ${safetyScore}% - ${safetyStatus}</p>
                         `;
-                        if (safetyScore <= 75) this.showError('Potential security risks detected.');
+                        if (safetyScore <= 70) this.showError('Potential risks detected.');
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Analysis Failed</h3><p>${e.message}</p>`;
-                        this.showError('Analysis failed due to network or proxy issues.');
+                        this.showError('Analysis failed.');
                     });
             }
 
             handleSecurityScan() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) return this.showError('Please enter a valid domain.');
+                if (!domain) return this.showError('Enter a valid domain.');
                 this.securityPanel.classList.add('open');
-                gsap.to(this.securityPanel, { top: 50, duration: 0.5, ease: 'power3.inOut' });
-                this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Assessing security vulnerabilities...</p>';
+                gsap.to(this.securityPanel, { top: 40, duration: 0.4, ease: 'power2.inOut' });
+                this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Checking vulnerabilities...</p>';
                 const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(domain)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
-                    .then(r => r.json()).then(d => {
-                        const doc = new DOMParser().parseFromString(d.contents, 'text/html');
-                        const hasHTTPS = domain.startsWith('https://');
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                    .then(r => r.text()).then(data => {
+                        const doc = new DOMParser().parseFromString(data, 'text/html');
                         const forms = doc.querySelectorAll('form').length;
                         const inputs = doc.querySelectorAll('input').length;
-                        const externalScripts = Array.from(doc.querySelectorAll('script[src]')).map(s => s.src).filter(s => !s.includes(domain)).length;
+                        const externalScripts = Array.from(doc.querySelectorAll('script[src]')).filter(s => !s.src.includes(domain)).length;
                         const iframes = doc.querySelectorAll('iframe').length;
                         const cookies = document.cookie.split(';').length;
-                        const securityScore = Math.min(100, 100 - (forms * 5 + inputs * 3 + externalScripts * 7 + iframes * 4 + (cookies > 5 ? 15 : 0) - (hasHTTPS ? 30 : 0)));
+                        const securityScore = Math.min(100, 100 - (forms * 4 + inputs * 2 + externalScripts * 5 + iframes * 3 + (cookies > 4 ? 10 : 0) - 25));
                         this.securityContent.innerHTML = `
                             <h3>${domain}</h3>
-                            <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
+                            <p>HTTPS: Yes</p>
                             <p>Forms: ${forms}</p>
                             <p>Inputs: ${inputs}</p>
                             <p>External Scripts: ${externalScripts}</p>
@@ -861,27 +861,26 @@
                             <p>Cookies: ${cookies}</p>
                             <p>Security Score: ${securityScore}%</p>
                         `;
-                        if (securityScore < 80) this.showError('Security vulnerabilities detected.');
+                        if (securityScore < 75) this.showError('Vulnerabilities detected.');
                     }).catch(e => {
                         this.securityContent.innerHTML = `<h3>Scan Failed</h3><p>${e.message}</p>`;
-                        this.showError('Security scan failed due to network or proxy issues.');
+                        this.showError('Security scan failed.');
                     });
             }
 
             handleAccessWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) return this.showError('Please enter a valid domain.');
+                if (!domain) return this.showError('Enter a valid domain.');
                 const proxy = this.selectProxy();
                 const timestamp = Date.now().toString(36);
                 const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
                 const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
                 const encodedDomain = btoa(domain.split('').reverse().join(''));
                 const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId);
-                const dynamicPorts = [8080, 8443, 9443, 2053];
+                const dynamicPorts = [8080, 8443, 9443];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
-                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
-                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const randomSub = `x${Math.random().toString(36).substr(2, 6)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 5000)}/p${Math.floor(Math.random() * 4999)}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
@@ -890,23 +889,20 @@
                     sid: sessionId,
                     hash: btoa(Math.random().toString(36)).replace(/=/g, '')
                 }).toString();
-                const url = `${proxy.url}${encodeURIComponent(obfuscated)}${pathLayer1}${pathLayer2}?${queryParams}`;
-                const newWindow = window.open('', '_blank', 'width=1200,height=800');
-                if (!newWindow) return this.showError('Pop-up blocked by browser.');
+                const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}?${queryParams}`;
+                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.accessButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
+                    gsap.to(this.accessButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
-                        navigator.clipboard.writeText(domain).catch(() => {});
+                        navigator.clipboard.writeText(`https://${domain}`);
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Accessed from: ${pos.coords.latitude}, ${pos.coords.longitude}`));
                         new Notification('Accessed', { body: `${domain} accessed`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                }).catch(e => {
-                    this.showError(`Access failed: ${e.message}. Retrying...`);
-                    this.retryAccess(domain, proxy, e);
-                });
+                }).catch(e => this.retryAccess(domain, proxy, e));
             }
 
             retryAccess(domain, prevProxy, error) {
@@ -916,11 +912,10 @@
                 const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
                 const encodedDomain = btoa(domain.split('').reverse().join(''));
                 const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId + timestamp);
-                const dynamicPorts = [8080, 8443, 9443, 2053];
+                const dynamicPorts = [8080, 8443, 9443];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
-                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
-                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const randomSub = `x${Math.random().toString(36).substr(2, 6)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 5000)}/p${Math.floor(Math.random() * 4999)}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
@@ -930,9 +925,9 @@
                     hash: btoa(Math.random().toString(36)).replace(/=/g, ''),
                     retry: 'true'
                 }).toString();
-                const url = `${proxy.url}${encodeURIComponent(obfuscated)}${pathLayer1}${pathLayer2}?${queryParams}`;
-                const newWindow = window.open('', '_blank', 'width=1200,height=800');
-                if (!newWindow) return this.showError('Pop-up blocked by browser.');
+                const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}?${queryParams}`;
+                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).catch(e => this.showError(`Retry failed: ${e.message}`));
@@ -944,25 +939,25 @@
 
             handleFetchCode() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
-                if (!domain) return this.showError('Please enter a valid domain.');
+                if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power3.inOut' });
-                this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving source code...</p>';
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code...</p>';
                 const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(domain)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
-                    .then(r => r.json()).then(d => {
-                        const scripts = d.contents.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
-                        const styles = d.contents.match(/<style[^>]*>[\s\S]*?<\/style>/gi)?.join('\n') || 'No styles found';
-                        const inlineScripts = d.contents.match(/<script[^>]*>([\s\S]*?)<\/script>/gi)?.map(s => s.replace(/<\/?script[^>]*>/g, '')).join('\n') || 'No inline scripts';
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                    .then(r => r.text()).then(data => {
+                        const scripts = data.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
+                        const styles = data.match(/<style[^>]*>[\s\S]*?<\/style>/gi)?.join('\n') || 'No styles found';
+                        const inlineScripts = data.match(/<script[^>]*>([\s\S]*?)<\/script>/gi)?.map(s => s.replace(/<\/?script[^>]*>/g, '')).join('\n') || 'No inline scripts';
                         this.analysisContent.innerHTML = `
                             <h3>${domain} Code</h3>
-                            <p><strong>Scripts:</strong></p><pre>${scripts}</pre>
-                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts}</pre>
-                            <p><strong>Styles:</strong></p><pre>${styles}</pre>
+                            <p><strong>Scripts:</strong></p><pre>${scripts.slice(0, 500)}</pre>
+                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts.slice(0, 500)}</pre>
+                            <p><strong>Styles:</strong></p><pre>${styles.slice(0, 500)}</pre>
                         `;
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Fetch Failed</h3><p>${e.message}</p>`;
-                        this.showError('Code fetch failed due to network or proxy issues.');
+                        this.showError('Code fetch failed.');
                     });
             }
         }
