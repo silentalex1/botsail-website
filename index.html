@@ -608,23 +608,25 @@
                 this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'reddit.com', 'stackoverflow.com', 'facebook.com', 'amazon.com'];
                 this.permissionsGranted = false;
                 this.proxyChain = [
-                    { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Origin-Auth': btoa('secure1' + Date.now()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'primary' }, weight: 0.4, timeout: 8000, region: 'us-east', fallback: true, retryCount: 2 },
-                    { url: 'https://corsproxy.io/?', headers: { 'X-Custom-Header': btoa('secure2' + Math.random()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'secondary' }, weight: 0.35, timeout: 7000, region: 'eu-west', fallback: true, retryCount: 2 },
-                    { url: 'https://corsproxy.org/?', headers: { 'X-Proxy-Token': btoa('secure3' + Date.now()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'tertiary' }, weight: 0.25, timeout: 6000, region: 'asia-south', fallback: false, retryCount: 1 }
+                    { url: 'https://cors-anywhere.herokuapp.com/', headers: { 'X-Request-Origin': btoa('secure1' + Date.now()), 'X-Custom-Token': btoa(Math.random().toString(36)), 'Cache-Control': 'no-cache', 'X-Proxy-Tier': 'alpha', 'X-Region': 'us-east-1' }, weight: 0.35, timeout: 5000, latency: 200, retryLimit: 3, backup: true },
+                    { url: 'https://api.codetabs.com/v1/proxy/?', headers: { 'X-Proxy-Key': btoa('secure2' + Date.now()), 'X-Session-ID': btoa(Math.random().toString(36)), 'Cache-Control': 'no-cache', 'X-Proxy-Tier': 'beta', 'X-Region': 'eu-west-1' }, weight: 0.30, timeout: 4500, latency: 180, retryLimit: 2, backup: true },
+                    { url: 'https://thingproxy.freeboard.io/fetch/', headers: { 'X-Auth-Token': btoa('secure3' + Math.random()), 'X-Proxy-Signature': btoa(Date.now().toString(36)), 'Cache-Control': 'no-cache', 'X-Proxy-Tier': 'gamma', 'X-Region': 'ap-southeast-1' }, weight: 0.25, timeout: 4000, latency: 150, retryLimit: 1, backup: false },
+                    { url: 'https://proxy.mixnode.app/?', headers: { 'X-Mix-Token': btoa('secure4' + Date.now()), 'X-Proxy-Nonce': btoa(Math.random().toString(36)), 'Cache-Control': 'no-cache', 'X-Proxy-Tier': 'delta', 'X-Region': 'sa-east-1' }, weight: 0.10, timeout: 3500, latency: 120, retryLimit: 1, backup: false }
                 ];
-                this.encryptionKey = this.generateEncryptionKey();
+                this.encryptionKey = this.generateComplexKey();
                 this.sessionTokens = new Map();
                 this.proxyPerformance = new Map();
+                this.activeWindows = new Set();
                 this.initEventListeners();
                 this.initAnimations();
                 this.renderHistory();
             }
 
-            generateEncryptionKey() {
+            generateComplexKey() {
                 const timestamp = Date.now().toString(36);
-                const randomStr = Math.random().toString(36).slice(2);
-                const userAgentHash = btoa(navigator.userAgent.slice(0, 50));
-                return btoa(`${timestamp}${randomStr}${userAgentHash}`);
+                const randomStr = Array(16).fill().map(() => Math.random().toString(36).charAt(2)).join('');
+                const deviceId = btoa(navigator.userAgent + navigator.platform).slice(0, 20);
+                return btoa(`${timestamp}${randomStr}${deviceId}`);
             }
 
             initEventListeners() {
@@ -779,21 +781,22 @@
             }
 
             selectProxy(domain) {
-                const domainHash = btoa(domain).slice(0, 10);
+                const domainHash = btoa(domain + Date.now()).slice(0, 12);
                 const geoWeight = this.calculateGeoWeight();
                 const perfWeight = this.calculatePerformanceWeight();
                 const weightedProxies = this.proxyChain.map(proxy => {
-                    const baseScore = proxy.weight;
-                    const geoScore = proxy.region === geoWeight.region ? 0.2 : 0;
+                    const baseScore = proxy.weight * (1 + (Math.random() * 0.1));
+                    const geoScore = proxy['X-Region'] === geoWeight.region ? 0.25 : 0;
                     const perfScore = this.proxyPerformance.get(proxy.url) || 0;
-                    return { ...proxy, score: baseScore + geoScore + perfScore };
+                    const latencyFactor = 1 / (proxy.latency / 100);
+                    return { ...proxy, score: (baseScore + geoScore + perfScore) * latencyFactor };
                 });
                 const totalScore = weightedProxies.reduce((sum, proxy) => sum + proxy.score, 0);
                 let random = Math.random() * totalScore;
                 for (let proxy of weightedProxies) {
                     random -= proxy.score;
                     if (random <= 0) {
-                        this.sessionTokens.set(domainHash, this.generateSessionToken(proxy.url));
+                        this.sessionTokens.set(domainHash, this.generateSessionToken(proxy.url, domain));
                         return proxy;
                     }
                 }
@@ -801,34 +804,35 @@
             }
 
             calculateGeoWeight() {
-                const regions = ['us-east', 'eu-west', 'asia-south'];
-                return { region: regions[Math.floor(Math.random() * regions.length)], weight: 0.2 };
+                const regions = ['us-east-1', 'eu-west-1', 'ap-southeast-1', 'sa-east-1'];
+                return { region: regions[Math.floor(Math.random() * regions.length)], weight: 0.25 };
             }
 
             calculatePerformanceWeight() {
                 return Array.from(this.proxyPerformance.entries()).reduce((acc, [url, perf]) => acc + perf, 0) / (this.proxyPerformance.size || 1);
             }
 
-            generateSessionToken(proxyUrl) {
+            generateSessionToken(proxyUrl, domain) {
                 const timestamp = Date.now().toString(36);
-                const randomStr = Math.random().toString(36).slice(2);
-                const proxyHash = btoa(proxyUrl).slice(0, 10);
-                return btoa(`${timestamp}${randomStr}${proxyHash}`);
+                const randomStr = Array(12).fill().map(() => Math.random().toString(36).charAt(2)).join('');
+                const domainHash = btoa(domain).slice(0, 15);
+                const proxyHash = btoa(proxyUrl + timestamp).slice(0, 10);
+                return btoa(`${timestamp}${randomStr}${domainHash}${proxyHash}`);
             }
 
             fetchWithTimeout(url, options, timeout) {
                 return new Promise((resolve, reject) => {
                     const controller = new AbortController();
                     const id = setTimeout(() => controller.abort(), timeout);
-                    fetch(url, { ...options, signal: controller.signal }).then(response => {
+                    fetch(url, { ...options, signal: controller.signal, credentials: 'omit' }).then(response => {
                         const proxyUrl = new URL(url).origin;
                         const currentPerf = this.proxyPerformance.get(proxyUrl) || 0;
-                        this.proxyPerformance.set(proxyUrl, currentPerf + (response.ok ? 0.1 : -0.1));
+                        this.proxyPerformance.set(proxyUrl, currentPerf + (response.ok ? 0.15 : -0.15));
                         resolve(response);
                     }).catch(err => {
                         const proxyUrl = new URL(url).origin;
                         const currentPerf = this.proxyPerformance.get(proxyUrl) || 0;
-                        this.proxyPerformance.set(proxyUrl, currentPerf - 0.2);
+                        this.proxyPerformance.set(proxyUrl, currentPerf - 0.25);
                         reject(err);
                     }).finally(() => clearTimeout(id));
                 });
@@ -842,14 +846,21 @@
                 });
                 iframe.src = url;
                 iframe.style.opacity = '0';
+                iframe.onload = () => windowRef.focus();
                 return iframe;
             }
 
-            verifyIframeLoad(iframe) {
+            verifyIframeLoad(iframe, windowRef) {
                 return new Promise((resolve, reject) => {
-                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: resolve });
+                    iframe.onload = () => {
+                        gsap.to(iframe, { opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: () => {
+                            resolve();
+                            windowRef.onunload = null;
+                        }});
+                        windowRef.onunload = () => this.activeWindows.delete(windowRef);
+                    };
                     iframe.onerror = () => reject(new Error('Failed to load'));
-                    setTimeout(() => reject(new Error('Load timeout')), 12000);
+                    setTimeout(() => reject(new Error('Load timeout')), 10000);
                 });
             }
 
@@ -858,10 +869,11 @@
                 if (!domain) return this.showError('Enter a valid domain.');
                 const url = `https://${domain}`;
                 const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
-                if (!newWindow) return this.showError('Pop-up blocked.');
+                if (!newWindow || this.activeWindows.has(newWindow)) return this.showError('Pop-up blocked or duplicate window.');
+                this.activeWindows.add(newWindow);
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
-                this.verifyIframeLoad(iframe).then(() => {
+                this.verifyIframeLoad(iframe, newWindow).then(() => {
                     this.saveToHistory(domain);
                     gsap.to(this.viewButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
@@ -869,7 +881,7 @@
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Location: ${pos.coords.latitude}, ${pos.coords.longitude}`));
                         new Notification('Loaded', { body: `${domain} loaded`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                }).catch(e => this.showError(`View failed: ${e.message}`));
+                }).catch(e => this.retryAccess('view', domain, newWindow, iframe, e));
             }
 
             handleAnalyzeWebsite() {
@@ -879,8 +891,8 @@
                 gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
                 this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Checking safety...</p>';
                 const proxy = this.selectProxy(domain);
-                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
-                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                const sessionToken = this.sessionTokens.get(btoa(domain + Date.now()).slice(0, 12));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Request-ID': btoa(Math.random().toString(36)) };
                 this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const doc = new DOMParser().parseFromString(data, 'text/html');
@@ -921,8 +933,8 @@
                 gsap.to(this.securityPanel, { top: 60, duration: 0.4, ease: 'power2.inOut' });
                 this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Checking vulnerabilities...</p>';
                 const proxy = this.selectProxy(domain);
-                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
-                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                const sessionToken = this.sessionTokens.get(btoa(domain + Date.now()).slice(0, 12));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Request-ID': btoa(Math.random().toString(36)) };
                 this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const doc = new DOMParser().parseFromString(data, 'text/html');
@@ -957,34 +969,37 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 const proxy = this.selectProxy(domain);
-                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
+                const sessionToken = this.sessionTokens.get(btoa(domain + Date.now()).slice(0, 12));
                 const timestamp = Date.now().toString(36);
-                const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
-                const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
-                const encodedDomain = btoa(domain.split('').reverse().join(''));
+                const nonce = btoa(Array(16).fill().map(() => Math.random().toString(36).charAt(2)).join('') + timestamp).replace(/=/g, '');
+                const sessionId = btoa(Array(12).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, '');
+                const encodedDomain = btoa(domain.split('').map(c => String.fromCharCode(c.charCodeAt(0) + 1)).join(''));
                 const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId + timestamp);
-                const dynamicPorts = [8080, 8443, 9443, 2053, 2083];
+                const dynamicPorts = [8080, 8443, 9443, 2053, 2083, 2096, 443];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
+                const randomSub = `x${Array(8).fill().map(() => Math.random().toString(36).charAt(2)).join('')}`;
                 const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
-                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
-                const pathLayer3 = `/s${Math.random().toString(36).substr(2, 6)}`;
+                const pathLayer2 = `/r${btoa(Array(10).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, '')}`;
+                const pathLayer3 = `/s${Array(6).fill().map(() => Math.random().toString(36).charAt(2)).join('')}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
                     port: port,
                     sub: randomSub,
                     sid: sessionId,
-                    hash: btoa(Math.random().toString(36)).replace(/=/g, ''),
+                    hash: btoa(Array(8).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, ''),
                     st: sessionToken,
-                    enc: btoa(this.encryptionKey).slice(0, 20)
+                    enc: btoa(this.encryptionKey).slice(0, 25),
+                    ver: '2.0',
+                    seq: Math.random().toString(36).substr(2, 6)
                 }).toString();
                 const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
                 const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
-                if (!newWindow) return this.showError('Pop-up blocked.');
+                if (!newWindow || this.activeWindows.has(newWindow)) return this.showError('Pop-up blocked or duplicate window.');
+                this.activeWindows.add(newWindow);
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
-                this.verifyIframeLoad(iframe).then(() => {
+                this.verifyIframeLoad(iframe, newWindow).then(() => {
                     this.saveToHistory(domain);
                     gsap.to(this.accessButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
@@ -992,54 +1007,61 @@
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Accessed from: ${pos.coords.latitude}, ${pos.coords.longitude}`));
                         new Notification('Accessed', { body: `${domain} accessed`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                }).catch(e => this.retryAccess(domain, proxy, e));
+                }).catch(e => this.retryAccess('access', domain, newWindow, iframe, e));
             }
 
-            retryAccess(domain, proxy, error) {
-                if (!proxy.fallback || proxy.retryCount <= 0) {
-                    this.showError(`Access failed: ${error.message}`);
+            retryAccess(action, domain, windowRef, iframe, error) {
+                const proxy = this.proxyChain.find(p => p.backup && p.retryLimit > 0);
+                if (!proxy) {
+                    this.showError(`${action.charAt(0).toUpperCase() + action.slice(1)} failed: ${error.message}`);
+                    windowRef.close();
+                    this.activeWindows.delete(windowRef);
                     return;
                 }
-                const updatedProxy = { ...proxy, retryCount: proxy.retryCount - 1 };
-                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
+                const updatedProxy = { ...proxy, retryLimit: proxy.retryLimit - 1 };
+                const sessionToken = this.sessionTokens.get(btoa(domain + Date.now()).slice(0, 12));
                 const timestamp = Date.now().toString(36);
-                const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
-                const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
-                const encodedDomain = btoa(domain.split('').reverse().join(''));
+                const nonce = btoa(Array(16).fill().map(() => Math.random().toString(36).charAt(2)).join('') + timestamp).replace(/=/g, '');
+                const sessionId = btoa(Array(12).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, '');
+                const encodedDomain = btoa(domain.split('').map(c => String.fromCharCode(c.charCodeAt(0) + 1)).join(''));
                 const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId + timestamp);
-                const dynamicPorts = [8080, 8443, 9443, 2053, 2083];
+                const dynamicPorts = [8080, 8443, 9443, 2053, 2083, 2096, 443];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
+                const randomSub = `x${Array(8).fill().map(() => Math.random().toString(36).charAt(2)).join('')}`;
                 const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
-                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
-                const pathLayer3 = `/s${Math.random().toString(36).substr(2, 6)}`;
+                const pathLayer2 = `/r${btoa(Array(10).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, '')}`;
+                const pathLayer3 = `/s${Array(6).fill().map(() => Math.random().toString(36).charAt(2)).join('')}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
                     port: port,
                     sub: randomSub,
                     sid: sessionId,
-                    hash: btoa(Math.random().toString(36)).replace(/=/g, ''),
+                    hash: btoa(Array(8).fill().map(() => Math.random().toString(36).charAt(2)).join('')).replace(/=/g, ''),
                     st: sessionToken,
-                    enc: btoa(this.encryptionKey).slice(0, 20),
+                    enc: btoa(this.encryptionKey).slice(0, 25),
+                    ver: '2.0',
+                    seq: Math.random().toString(36).substr(2, 6),
                     retry: 'true'
                 }).toString();
                 const url = `${updatedProxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
-                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
-                if (!newWindow) return this.showError('Pop-up blocked.');
-                const iframe = this.createIframe(newWindow, url);
-                newWindow.document.body.appendChild(iframe);
-                this.verifyIframeLoad(iframe).catch(e => this.showError(`Retry failed: ${e.message}`));
+                iframe.src = url;
+                this.verifyIframeLoad(iframe, windowRef).catch(e => {
+                    this.showError(`Retry ${action} failed: ${e.message}`);
+                    windowRef.close();
+                    this.activeWindows.delete(windowRef);
+                });
             }
 
             xorEncrypt(text, key) {
                 let result = '';
-                const keyBytes = key.split('').map(c => c.charCodeAt(0));
-                const textBytes = text.split('').map(c => c.charCodeAt(0));
+                const keyBytes = Array.from(key).map(c => c.charCodeAt(0));
+                const textBytes = Array.from(text).map(c => c.charCodeAt(0));
                 for (let i = 0; i < textBytes.length; i++) {
-                    const keyByte = keyBytes[i % keyBytes.length];
-                    const encryptedByte = textBytes[i] ^ keyByte;
-                    result += String.fromCharCode(encryptedByte);
+                    const keyByte = keyBytes[(i * 3) % keyBytes.length];
+                    const shift = (i % 5) + 1;
+                    const encryptedByte = (textBytes[i] ^ keyByte) + shift;
+                    result += String.fromCharCode(encryptedByte % 256);
                 }
                 return btoa(result);
             }
@@ -1051,8 +1073,8 @@
                 gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
                 this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code...</p>';
                 const proxy = this.selectProxy(domain);
-                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
-                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                const sessionToken = this.sessionTokens.get(btoa(domain + Date.now()).slice(0, 12));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Request-ID': btoa(Math.random().toString(36)) };
                 this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const scripts = data.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
