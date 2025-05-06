@@ -39,9 +39,9 @@
         .navbar {
             background: var(--navbar-bg);
             backdrop-filter: blur(15px);
-            padding: 0.5rem;
+            padding: 0.8rem;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             position: fixed;
@@ -52,32 +52,33 @@
         }
 
         .navbar-brand {
-            font-size: 1.1rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            margin-left: 0.6rem;
+            gap: 0.5rem;
+            margin-left: 1rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.4rem;
-            margin-left: 0.6rem;
+            gap: 0.8rem;
+            margin-right: 1rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-size: 0.8rem;
-            padding: 0.3rem 0.8rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            padding: 0.4rem 1rem;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.08);
             transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.4rem;
         }
 
         .nav-links a:hover {
@@ -89,21 +90,20 @@
 
         .container {
             position: relative;
-            min-height: calc(100vh - 40px);
+            min-height: calc(100vh - 60px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 3;
-            padding-top: 40px;
-            padding-bottom: 10px;
+            padding: 60px 1rem 1rem;
         }
 
         .input-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 15px;
-            padding: 1rem;
-            width: min(88%, 350px);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            width: min(90%, 500px);
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.25);
             transform-style: preserve-3d;
@@ -121,7 +121,7 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: clamp(1rem, 2.5vw, 1.5rem);
             width: 100%;
         }
 
@@ -129,14 +129,14 @@
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(155, 163, 235, 0.35);
             border-radius: 10px;
-            padding: 0.5rem 1rem;
+            padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.2rem);
             color: var(--text);
-            font-size: 0.8rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
             outline: none;
             transition: all 0.3s ease;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15), var(--glow);
-            margin-left: 4%;
-            width: 92%;
+            margin-left: 3%;
+            width: 94%;
             font-weight: 400;
         }
 
@@ -154,25 +154,26 @@
 
         .action-buttons {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: clamp(0.5rem, 1.5vw, 0.8rem);
             justify-content: center;
-            width: 92%;
-            margin-left: 4%;
+            width: 94%;
+            margin-left: 3%;
         }
 
         .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .access-button, .fetch-button {
             background: var(--primary);
             border: none;
             border-radius: 10px;
-            padding: 0.4rem 0.8rem;
+            padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
             color: white;
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            justify-content: center;
+            gap: 0.4rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(155, 163, 235, 0.4);
             position: relative;
@@ -222,15 +223,15 @@
         .error-message {
             color: #dc2626;
             background: var(--error-bg);
-            padding: 0.4rem;
+            padding: clamp(0.4rem, 1.2vw, 0.6rem);
             border-radius: 8px;
             text-align: center;
             opacity: 0;
             transition: opacity 0.4s ease;
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
             box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
-            width: 92%;
-            margin-left: 4%;
+            width: 94%;
+            margin-left: 3%;
         }
 
         .error-message.show {
@@ -239,14 +240,14 @@
 
         .history-panel {
             position: fixed;
-            top: 40px;
-            right: -250px;
-            width: 220px;
-            height: calc(100% - 40px);
+            top: 60px;
+            right: -300px;
+            width: min(80%, 300px);
+            height: calc(100% - 60px);
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-left: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0.8rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             transition: right 0.4s ease;
             overflow-y: auto;
             z-index: 40;
@@ -259,8 +260,8 @@
         .history-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            padding: 0.4rem;
-            margin-bottom: 0.4rem;
+            padding: clamp(0.4rem, 1.2vw, 0.6rem);
+            margin-bottom: 0.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -275,7 +276,7 @@
 
         .history-item p {
             margin: 0;
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
             color: var(--text);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -286,8 +287,8 @@
             background: #dc2626;
             border: none;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: clamp(18px, 3vw, 22px);
+            height: clamp(18px, 3vw, 22px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -317,23 +318,24 @@
         .suggestion-list {
             background: var(--glass-bg);
             border-radius: 8px;
-            padding: 0.4rem;
-            max-height: 120px;
+            padding: clamp(0.4rem, 1.2vw, 0.6rem);
+            max-height: 150px;
             overflow-y: auto;
             position: absolute;
             top: 100%;
-            left: 4%;
-            right: 4%;
+            left: 3%;
+            right: 3%;
             display: none;
             z-index: 20;
             box-shadow: var(--shadow);
         }
 
         .suggestion-item {
-            padding: 0.3rem;
+            padding: clamp(0.3rem, 0.8vw, 0.4rem);
             cursor: pointer;
             border-radius: 6px;
             transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
         }
 
         .suggestion-item:hover {
@@ -362,8 +364,8 @@
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 15px;
-            padding: 1rem;
-            width: min(88%, 350px);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            width: min(90%, 400px);
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.4s ease;
@@ -375,20 +377,20 @@
 
         .modal-content h2 {
             margin-top: 0;
-            font-size: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text);
         }
 
         .modal-content p {
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
             color: var(--text);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             line-height: 1.4;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 0.8rem;
+            gap: clamp(0.8rem, 2vw, 1rem);
             justify-content: center;
         }
 
@@ -396,10 +398,10 @@
             background: var(--primary);
             border: none;
             border-radius: 8px;
-            padding: 0.4rem 0.8rem;
+            padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
             color: white;
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(155, 163, 235, 0.4);
@@ -421,14 +423,14 @@
 
         .analysis-panel {
             position: fixed;
-            bottom: -300px;
+            bottom: -350px;
             left: 0;
             width: 100%;
-            height: 250px;
+            height: min(50vh, 350px);
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0.8rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             transition: bottom 0.4s ease;
             z-index: 40;
             overflow-y: auto;
@@ -440,51 +442,78 @@
 
         .analysis-content {
             color: var(--text);
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
         }
 
         .analysis-content h3 {
             margin-top: 0;
-            font-size: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         .analysis-content p {
-            margin: 0.3rem 0;
+            margin: 0.4rem 0;
             line-height: 1.4;
         }
 
         .security-panel {
             position: fixed;
-            top: -300px;
+            top: -350px;
             left: 0;
             width: 100%;
-            height: 250px;
+            height: min(50vh, 350px);
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0.8rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             transition: top 0.4s ease;
             z-index: 40;
             overflow-y: auto;
         }
 
         .security-panel.open {
-            top: 40px;
+            top: 60px;
         }
 
         .security-content {
             color: var(--text);
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
         }
 
         .security-content h3 {
             margin-top: 0;
-            font-size: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         .security-content p {
-            margin: 0.3rem 0;
+            margin: 0.4rem 0;
             line-height: 1.4;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                margin-right: 0;
+            }
+
+            .input-card {
+                padding: 0.8rem;
+            }
+
+            .action-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .input-card {
+                width: 550px;
+            }
         }
     </style>
 </head>
@@ -579,14 +608,23 @@
                 this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'reddit.com', 'stackoverflow.com', 'facebook.com', 'amazon.com'];
                 this.permissionsGranted = false;
                 this.proxyChain = [
-                    { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Origin-Auth': btoa('secure1' + Date.now()), 'Cache-Control': 'no-cache' }, weight: 0.5, timeout: 6000 },
-                    { url: 'https://corsproxy.io/?', headers: { 'X-Custom-Header': btoa('secure2' + Math.random()), 'Cache-Control': 'no-cache' }, weight: 0.3, timeout: 6000 },
-                    { url: 'https://corsproxy.org/?', headers: { 'X-Proxy-Token': btoa('secure3' + Date.now()), 'Cache-Control': 'no-cache' }, weight: 0.2, timeout: 6000 }
+                    { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Origin-Auth': btoa('secure1' + Date.now()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'primary' }, weight: 0.4, timeout: 8000, region: 'us-east', fallback: true, retryCount: 2 },
+                    { url: 'https://corsproxy.io/?', headers: { 'X-Custom-Header': btoa('secure2' + Math.random()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'secondary' }, weight: 0.35, timeout: 7000, region: 'eu-west', fallback: true, retryCount: 2 },
+                    { url: 'https://corsproxy.org/?', headers: { 'X-Proxy-Token': btoa('secure3' + Date.now()), 'Cache-Control': 'no-cache', 'X-Proxy-Layer': 'tertiary' }, weight: 0.25, timeout: 6000, region: 'asia-south', fallback: false, retryCount: 1 }
                 ];
-                this.encryptionKey = btoa(Math.random().toString(36).slice(2) + Date.now() + Math.random().toString(36));
+                this.encryptionKey = this.generateEncryptionKey();
+                this.sessionTokens = new Map();
+                this.proxyPerformance = new Map();
                 this.initEventListeners();
                 this.initAnimations();
                 this.renderHistory();
+            }
+
+            generateEncryptionKey() {
+                const timestamp = Date.now().toString(36);
+                const randomStr = Math.random().toString(36).slice(2);
+                const userAgentHash = btoa(navigator.userAgent.slice(0, 50));
+                return btoa(`${timestamp}${randomStr}${userAgentHash}`);
             }
 
             initEventListeners() {
@@ -603,12 +641,12 @@
                 this.domainInput.addEventListener('input', this.debounce(() => {
                     this.updateBackground();
                     this.updateSuggestions();
-                }, 100));
+                }, 120));
                 this.domainInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') this.handleAccessWebsite();
                 });
                 this.domainInput.addEventListener('focus', () => this.showSuggestions());
-                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 150));
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 200));
                 this.suggestionList.addEventListener('click', (e) => {
                     const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
                     if (suggestion) {
@@ -629,10 +667,10 @@
             }
 
             initAnimations() {
-                gsap.from('.navbar', { duration: 0.8, y: -40, opacity: 0, ease: 'power2.out' });
-                gsap.from('.input-card', { duration: 1, y: 40, opacity: 0, ease: 'power2.out' });
-                gsap.from('.domain-input', { duration: 0.8, delay: 0.1, x: -40, opacity: 0, ease: 'power2.out' });
-                gsap.from('.action-buttons', { duration: 0.8, delay: 0.2, x: 40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.navbar', { duration: 0.9, y: -50, opacity: 0, ease: 'power2.out' });
+                gsap.from('.input-card', { duration: 1.1, y: 50, opacity: 0, ease: 'power2.out' });
+                gsap.from('.domain-input', { duration: 0.9, delay: 0.1, x: -50, opacity: 0, ease: 'power2.out' });
+                gsap.from('.action-buttons', { duration: 0.9, delay: 0.2, x: 50, opacity: 0, ease: 'power2.out' });
             }
 
             debounce(func, wait) {
@@ -651,7 +689,7 @@
                     return;
                 }
                 try {
-                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=96`;
                     this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
                     gsap.to(this.backgroundOverlay, { opacity: 0.65, duration: 1.2, ease: 'power2.inOut' });
                 } catch {
@@ -686,11 +724,11 @@
 
             toggleHistoryPanel() {
                 this.historyPanel.classList.toggle('open');
-                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -250, duration: 0.4, ease: 'power2.inOut' });
+                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -300, duration: 0.4, ease: 'power2.inOut' });
             }
 
             renderHistory() {
-                this.historyList.innerHTML = this.history.slice(0, 8).map(domain => `
+                this.historyList.innerHTML = this.history.slice(0, 10).map(domain => `
                     <div class="history-item" data-domain="${domain}">
                         <p>${domain}</p>
                         <button class="delete-btn"><i class="fas fa-times"></i></button>
@@ -701,7 +739,7 @@
             saveToHistory(domain) {
                 if (!this.history.includes(domain)) {
                     this.history.unshift(domain);
-                    this.history = this.history.slice(0, 40);
+                    this.history = this.history.slice(0, 50);
                     localStorage.setItem('domainHistory', JSON.stringify(this.history));
                     this.renderHistory();
                 }
@@ -740,21 +778,59 @@
                 }
             }
 
-            selectProxy() {
-                const totalWeight = this.proxyChain.reduce((sum, proxy) => sum + proxy.weight, 0);
-                let random = Math.random() * totalWeight;
-                for (let proxy of this.proxyChain) {
-                    random -= proxy.weight;
-                    if (random <= 0) return proxy;
+            selectProxy(domain) {
+                const domainHash = btoa(domain).slice(0, 10);
+                const geoWeight = this.calculateGeoWeight();
+                const perfWeight = this.calculatePerformanceWeight();
+                const weightedProxies = this.proxyChain.map(proxy => {
+                    const baseScore = proxy.weight;
+                    const geoScore = proxy.region === geoWeight.region ? 0.2 : 0;
+                    const perfScore = this.proxyPerformance.get(proxy.url) || 0;
+                    return { ...proxy, score: baseScore + geoScore + perfScore };
+                });
+                const totalScore = weightedProxies.reduce((sum, proxy) => sum + proxy.score, 0);
+                let random = Math.random() * totalScore;
+                for (let proxy of weightedProxies) {
+                    random -= proxy.score;
+                    if (random <= 0) {
+                        this.sessionTokens.set(domainHash, this.generateSessionToken(proxy.url));
+                        return proxy;
+                    }
                 }
-                return this.proxyChain[0];
+                return weightedProxies[0];
+            }
+
+            calculateGeoWeight() {
+                const regions = ['us-east', 'eu-west', 'asia-south'];
+                return { region: regions[Math.floor(Math.random() * regions.length)], weight: 0.2 };
+            }
+
+            calculatePerformanceWeight() {
+                return Array.from(this.proxyPerformance.entries()).reduce((acc, [url, perf]) => acc + perf, 0) / (this.proxyPerformance.size || 1);
+            }
+
+            generateSessionToken(proxyUrl) {
+                const timestamp = Date.now().toString(36);
+                const randomStr = Math.random().toString(36).slice(2);
+                const proxyHash = btoa(proxyUrl).slice(0, 10);
+                return btoa(`${timestamp}${randomStr}${proxyHash}`);
             }
 
             fetchWithTimeout(url, options, timeout) {
                 return new Promise((resolve, reject) => {
                     const controller = new AbortController();
                     const id = setTimeout(() => controller.abort(), timeout);
-                    fetch(url, { ...options, signal: controller.signal }).then(resolve).catch(reject).finally(() => clearTimeout(id));
+                    fetch(url, { ...options, signal: controller.signal }).then(response => {
+                        const proxyUrl = new URL(url).origin;
+                        const currentPerf = this.proxyPerformance.get(proxyUrl) || 0;
+                        this.proxyPerformance.set(proxyUrl, currentPerf + (response.ok ? 0.1 : -0.1));
+                        resolve(response);
+                    }).catch(err => {
+                        const proxyUrl = new URL(url).origin;
+                        const currentPerf = this.proxyPerformance.get(proxyUrl) || 0;
+                        this.proxyPerformance.set(proxyUrl, currentPerf - 0.2);
+                        reject(err);
+                    }).finally(() => clearTimeout(id));
                 });
             }
 
@@ -773,7 +849,7 @@
                 return new Promise((resolve, reject) => {
                     iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: resolve });
                     iframe.onerror = () => reject(new Error('Failed to load'));
-                    setTimeout(() => reject(new Error('Load timeout')), 10000);
+                    setTimeout(() => reject(new Error('Load timeout')), 12000);
                 });
             }
 
@@ -781,7 +857,7 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 const url = `https://${domain}`;
-                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
@@ -802,8 +878,10 @@
                 this.analysisPanel.classList.add('open');
                 gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
                 this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Checking safety...</p>';
-                const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                const proxy = this.selectProxy(domain);
+                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const doc = new DOMParser().parseFromString(data, 'text/html');
                         const title = doc.querySelector('title')?.textContent || 'No title';
@@ -811,10 +889,11 @@
                         const links = doc.querySelectorAll('a').length;
                         const scripts = doc.querySelectorAll('script').length;
                         const images = doc.querySelectorAll('img').length;
-                        const hasHTTPS = true;
                         const trackers = ['google-analytics', 'facebook', 'doubleclick'].filter(t => data.toLowerCase().includes(t)).length;
                         const suspicious = ['eval(', 'document.write', 'onerror', 'javascript:'].some(k => data.includes(k));
-                        const safetyScore = Math.min(100, 100 - (scripts * 1.5 + (links > 40 ? 10 : 0) + (images > 25 ? 8 : 0) + (trackers * 6) + (suspicious ? 15 : 0) - (hasHTTPS ? 20 : 0)));
+                        const externalResources = Array.from(doc.querySelectorAll('link, script[src], img[src]'))
+                            .filter(el => el.src && !el.src.includes(domain) && !el.href?.includes(domain)).length;
+                        const safetyScore = Math.min(100, 100 - (scripts * 1.8 + (links > 50 ? 12 : 0) + (images > 30 ? 10 : 0) + (trackers * 7) + (suspicious ? 18 : 0) + (externalResources * 2) - 25));
                         const safetyStatus = safetyScore > 70 ? 'Safe' : 'Caution';
                         this.analysisContent.innerHTML = `
                             <h3>${domain}</h3>
@@ -824,7 +903,7 @@
                             <p>Scripts: ${scripts}</p>
                             <p>Images: ${images}</p>
                             <p>Trackers: ${trackers}</p>
-                            <p>HTTPS: Yes</p>
+                            <p>External Resources: ${externalResources}</p>
                             <p>Suspicious Code: ${suspicious ? 'Detected' : 'None'}</p>
                             <p>Safety Score: ${safetyScore}% - ${safetyStatus}</p>
                         `;
@@ -839,10 +918,12 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.securityPanel.classList.add('open');
-                gsap.to(this.securityPanel, { top: 40, duration: 0.4, ease: 'power2.inOut' });
+                gsap.to(this.securityPanel, { top: 60, duration: 0.4, ease: 'power2.inOut' });
                 this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Checking vulnerabilities...</p>';
-                const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                const proxy = this.selectProxy(domain);
+                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const doc = new DOMParser().parseFromString(data, 'text/html');
                         const forms = doc.querySelectorAll('form').length;
@@ -850,7 +931,9 @@
                         const externalScripts = Array.from(doc.querySelectorAll('script[src]')).filter(s => !s.src.includes(domain)).length;
                         const iframes = doc.querySelectorAll('iframe').length;
                         const cookies = document.cookie.split(';').length;
-                        const securityScore = Math.min(100, 100 - (forms * 4 + inputs * 2 + externalScripts * 5 + iframes * 3 + (cookies > 4 ? 10 : 0) - 25));
+                        const csp = doc.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content || 'Not defined';
+                        const xssPotential = data.includes('<script') && !csp.includes('script-src');
+                        const securityScore = Math.min(100, 100 - (forms * 5 + inputs * 3 + externalScripts * 6 + iframes * 4 + (cookies > 5 ? 12 : 0) + (xssPotential ? 15 : 0) - (csp !== 'Not defined' ? 20 : 0) - 25));
                         this.securityContent.innerHTML = `
                             <h3>${domain}</h3>
                             <p>HTTPS: Yes</p>
@@ -859,6 +942,8 @@
                             <p>External Scripts: ${externalScripts}</p>
                             <p>Iframes: ${iframes}</p>
                             <p>Cookies: ${cookies}</p>
+                            <p>CSP: ${csp.slice(0, 50)}</p>
+                            <p>XSS Potential: ${xssPotential ? 'Yes' : 'No'}</p>
                             <p>Security Score: ${securityScore}%</p>
                         `;
                         if (securityScore < 75) this.showError('Vulnerabilities detected.');
@@ -871,26 +956,31 @@
             handleAccessWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
-                const proxy = this.selectProxy();
+                const proxy = this.selectProxy(domain);
+                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
                 const timestamp = Date.now().toString(36);
                 const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
                 const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
                 const encodedDomain = btoa(domain.split('').reverse().join(''));
-                const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId);
-                const dynamicPorts = [8080, 8443, 9443];
+                const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId + timestamp);
+                const dynamicPorts = [8080, 8443, 9443, 2053, 2083];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 6)}`;
-                const pathLayer1 = `/v${Math.floor(Math.random() * 5000)}/p${Math.floor(Math.random() * 4999)}`;
+                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
+                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const pathLayer3 = `/s${Math.random().toString(36).substr(2, 6)}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
                     port: port,
                     sub: randomSub,
                     sid: sessionId,
-                    hash: btoa(Math.random().toString(36)).replace(/=/g, '')
+                    hash: btoa(Math.random().toString(36)).replace(/=/g, ''),
+                    st: sessionToken,
+                    enc: btoa(this.encryptionKey).slice(0, 20)
                 }).toString();
-                const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}?${queryParams}`;
-                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
+                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
@@ -905,17 +995,24 @@
                 }).catch(e => this.retryAccess(domain, proxy, e));
             }
 
-            retryAccess(domain, prevProxy, error) {
-                const proxy = this.selectProxy();
+            retryAccess(domain, proxy, error) {
+                if (!proxy.fallback || proxy.retryCount <= 0) {
+                    this.showError(`Access failed: ${error.message}`);
+                    return;
+                }
+                const updatedProxy = { ...proxy, retryCount: proxy.retryCount - 1 };
+                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
                 const timestamp = Date.now().toString(36);
                 const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
                 const sessionId = btoa(Math.random().toString(36)).replace(/=/g, '');
                 const encodedDomain = btoa(domain.split('').reverse().join(''));
                 const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + sessionId + timestamp);
-                const dynamicPorts = [8080, 8443, 9443];
+                const dynamicPorts = [8080, 8443, 9443, 2053, 2083];
                 const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
-                const randomSub = `x${Math.random().toString(36).substr(2, 6)}`;
-                const pathLayer1 = `/v${Math.floor(Math.random() * 5000)}/p${Math.floor(Math.random() * 4999)}`;
+                const randomSub = `x${Math.random().toString(36).substr(2, 8)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
+                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const pathLayer3 = `/s${Math.random().toString(36).substr(2, 6)}`;
                 const queryParams = new URLSearchParams({
                     nonce: nonce,
                     t: timestamp,
@@ -923,10 +1020,12 @@
                     sub: randomSub,
                     sid: sessionId,
                     hash: btoa(Math.random().toString(36)).replace(/=/g, ''),
+                    st: sessionToken,
+                    enc: btoa(this.encryptionKey).slice(0, 20),
                     retry: 'true'
                 }).toString();
-                const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}?${queryParams}`;
-                const newWindow = window.open('', '_blank', 'width=1000,height=700');
+                const url = `${updatedProxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
+                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
@@ -934,7 +1033,15 @@
             }
 
             xorEncrypt(text, key) {
-                return btoa([...text].map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ key.charCodeAt(i % key.length))).join(''));
+                let result = '';
+                const keyBytes = key.split('').map(c => c.charCodeAt(0));
+                const textBytes = text.split('').map(c => c.charCodeAt(0));
+                for (let i = 0; i < textBytes.length; i++) {
+                    const keyByte = keyBytes[i % keyBytes.length];
+                    const encryptedByte = textBytes[i] ^ keyByte;
+                    result += String.fromCharCode(encryptedByte);
+                }
+                return btoa(result);
             }
 
             handleFetchCode() {
@@ -943,17 +1050,21 @@
                 this.analysisPanel.classList.add('open');
                 gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
                 this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code...</p>';
-                const proxy = this.selectProxy();
-                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers: proxy.headers }, proxy.timeout)
+                const proxy = this.selectProxy(domain);
+                const sessionToken = this.sessionTokens.get(btoa(domain).slice(0, 10));
+                const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString() };
+                this.fetchWithTimeout(`${proxy.url}${encodeURIComponent(`https://${domain}`)}`, { mode: 'cors', headers }, proxy.timeout)
                     .then(r => r.text()).then(data => {
                         const scripts = data.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
                         const styles = data.match(/<style[^>]*>[\s\S]*?<\/style>/gi)?.join('\n') || 'No styles found';
                         const inlineScripts = data.match(/<script[^>]*>([\s\S]*?)<\/script>/gi)?.map(s => s.replace(/<\/?script[^>]*>/g, '')).join('\n') || 'No inline scripts';
+                        const inlineStyles = data.match(/style="[^"]*"/gi)?.join('\n') || 'No inline styles';
                         this.analysisContent.innerHTML = `
                             <h3>${domain} Code</h3>
-                            <p><strong>Scripts:</strong></p><pre>${scripts.slice(0, 500)}</pre>
-                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts.slice(0, 500)}</pre>
-                            <p><strong>Styles:</strong></p><pre>${styles.slice(0, 500)}</pre>
+                            <p><strong>Scripts:</strong></p><pre>${scripts.slice(0, 600)}</pre>
+                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts.slice(0, 600)}</pre>
+                            <p><strong>Styles:</strong></p><pre>${styles.slice(0, 600)}</pre>
+                            <p><strong>Inline Styles:</strong></p><pre>${inlineStyles.slice(0, 600)}</pre>
                         `;
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Fetch Failed</h3><p>${e.message}</p>`;
