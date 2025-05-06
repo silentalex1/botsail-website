@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahoot Cheat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --primary-hover: #1C86EE;
+            --accent: #4682B4;
+            --accent-hover: #4169E1;
+            --secondary: #6495ED;
+            --secondary-hover: #5D8AA8;
+            --tertiary: #87CEEB;
+            --tertiary-hover: #B0C4DE;
+            --text: #E6F0FA;
+            --bg-dark: #0D1B2A;
+            --bg-light: #1B263B;
+            --glass-bg: rgba(13, 27, 42, 0.92);
+            --shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 10px rgba(30, 144, 255, 0.5);
+            --navbar-bg: rgba(13, 27, 42, 0.96);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: linear-gradient(160deg, var(--bg-dark), var(--bg-light));
+            overflow-x: hidden;
+            transition: background 0.8s ease;
+        }
+
+        .navbar {
+            background: var(--navbar-bg);
+            backdrop-filter: blur(12px);
+            padding: 0.7rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar-brand {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-left: 0.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.6rem;
+            margin-right: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 1px 6px rgba(30, 144, 255, 0.3);
+        }
+
+        .container {
+            position: relative;
+            min-height: calc(100vh - 50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            padding: 70px 1rem 1rem;
+        }
+
+        .cheat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+            width: min(90%, 400px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cheat-card:hover {
+            transform: translateZ(15px) scale(1.01);
+            box-shadow: 0 8px 30px rgba(30, 144, 255, 0.6);
+        }
+
+        .cheat-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0.8rem;
+        }
+
+        .cheat-card h2 {
+            font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+            margin: 0 0 0.8rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.8rem, 2vw, 1.2rem);
+            width: 100%;
+            align-items: center;
+        }
+
+        .pin-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(30, 144, 255, 0.3);
+            border-radius: 8px;
+            padding: clamp(0.4rem, 1vw, 0.6rem)
