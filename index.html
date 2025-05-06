@@ -3,158 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploit Test Area</title>
+    <title>EduBypass</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary: #4CAF50;
-            --primary-hover: #45a049;
-            --accent: #66BB6A;
-            --accent-hover: #4CAF50;
-            --secondary: #81C784;
-            --secondary-hover: #66BB6A;
-            --tertiary: #A5D6A7;
-            --tertiary-hover: #81C784;
-            --text: #FFFFFF;
-            --bg-dark: #1B5E20;
-            --bg-light: #2F6A31;
-            --glass-bg: rgba(27, 94, 32, 0.88);
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
-            --glow: 0 0 12px rgba(76, 175, 80, 0.55);
-            --navbar-bg: rgba(27, 94, 32, 0.94);
+            --primary: #1E90FF;
+            --primary-hover: #1C86EE;
+            --accent: #4682B4;
+            --accent-hover: #4169E1;
+            --secondary: #6495ED;
+            --secondary-hover: #5D8AA8;
+            --tertiary: #87CEEB;
+            --tertiary-hover: #B0C4DE;
+            --text: #E6F0FA;
+            --bg-dark: #0D1B2A;
+            --bg-light: #1B263B;
+            --glass-bg: rgba(13, 27, 42, 0.92);
+            --shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 10px rgba(30, 144, 255, 0.5);
+            --navbar-bg: rgba(13, 27, 42, 0.96);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text);
-            background: linear-gradient(170deg, var(--bg-dark), var(--bg-light));
+            background: linear-gradient(160deg, var(--bg-dark), var(--bg-light));
             overflow-x: hidden;
-            perspective: 800px;
-            transition: background 1.2s ease;
+            transition: background 0.8s ease;
         }
 
         .navbar {
             background: var(--navbar-bg);
-            backdrop-filter: blur(15px);
-            padding: 0.8rem;
+            backdrop-filter: blur(12px);
+            padding: 0.7rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 50;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         .navbar-brand {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-left: 1rem;
+            gap: 0.4rem;
+            margin-left: 0.8rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.8rem;
-            margin-right: 1rem;
+            gap: 0.6rem;
+            margin-right: 0.8rem;
             flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            transition: all 0.25s ease;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
         }
 
         .nav-links a:hover {
             background: var(--primary);
-            color: white;
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 1px 6px rgba(30, 144, 255, 0.3);
         }
 
         .container {
             position: relative;
-            min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 50px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 3;
-            padding: 60px 1rem 1rem;
+            padding: 70px 1rem 1rem;
         }
 
         .input-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 1.5rem);
-            width: min(90%, 500px);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+            width: min(90%, 450px);
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .input-card:hover {
-            transform: translateZ(20px) scale(1.02);
-            box-shadow: 0 10px 35px rgba(76, 175, 80, 0.65);
+            transform: translateZ(15px) scale(1.01);
+            box-shadow: 0 8px 30px rgba(30, 144, 255, 0.6);
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: clamp(1rem, 2.5vw, 1.5rem);
+            gap: clamp(0.8rem, 2vw, 1.2rem);
             width: 100%;
         }
 
         .domain-input {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(76, 175, 80, 0.35);
-            border-radius: 10px;
-            padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.2rem);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(30, 144, 255, 0.3);
+            border-radius: 8px;
+            padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 1.5vw, 1rem);
             color: var(--text);
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
             outline: none;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15), var(--glow);
-            margin-left: 3%;
+            transition: all 0.2s ease;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), var(--glow);
             width: 94%;
+            margin-left: 3%;
             font-weight: 400;
         }
 
         .domain-input:focus {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: var(--glow), inset 0 1px 3px rgba(76, 175, 80, 0.15);
-            transform: scale(1.01);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow), inset 0 1px 2px rgba(30, 144, 255, 0.1);
+            transform: scale(1.005);
             border-color: var(--primary-hover);
         }
 
         .domain-input::placeholder {
-            color: rgba(255, 255, 255, 0.55);
+            color: rgba(255, 255, 255, 0.5);
             font-weight: 300;
         }
 
         .action-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: clamp(0.5rem, 1.5vw, 0.8rem);
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: clamp(0.4rem, 1vw, 0.6rem);
             justify-content: center;
             width: 94%;
             margin-left: 3%;
@@ -163,70 +164,44 @@
         .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .access-button, .fetch-button {
             background: var(--primary);
             border: none;
-            border-radius: 10px;
-            padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
+            border-radius: 8px;
+            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
             color: white;
             font-weight: 500;
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+            gap: 0.3rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 10px rgba(30, 144, 255, 0.3);
         }
-
-        .view-button::before, .history-button::before, .clear-button::before, .permission-button::before, .analyze-button::before, .security-button::before, .access-button::before, .fetch-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s ease, height 0.3s ease;
-        }
-
-        .view-button:hover::before, .history-button:hover::before, .clear-button:hover::before, .permission-button:hover::before, .analyze-button:hover::before, .security-button:hover::before, .access-button:hover::before, .fetch-button:hover::before {
-            width: 150%;
-            height: 150%;
-        }
-
-        .history-button { background: var(--accent); }
-        .clear-button { background: #A5D6A7; }
-        .permission-button { background: #81C784; }
-        .analyze-button { background: var(--secondary); }
-        .security-button { background: var(--tertiary); }
-        .access-button { background: #66BB6A; }
-        .fetch-button { background: #A5D6A7; }
 
         .view-button:hover, .history-button:hover, .clear-button:hover, .permission-button:hover, .analyze-button:hover, .security-button:hover, .access-button:hover, .fetch-button:hover {
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.6);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.5);
         }
 
         .view-button:hover { background: var(--primary-hover); }
         .history-button:hover { background: var(--accent-hover); }
-        .clear-button:hover { background: #81C784; }
-        .permission-button:hover { background: #66BB6A; }
+        .clear-button:hover { background: var(--tertiary-hover); }
+        .permission-button:hover { background: var(--secondary-hover); }
         .analyze-button:hover { background: var(--secondary-hover); }
         .security-button:hover { background: var(--tertiary-hover); }
-        .access-button:hover { background: #4CAF50; }
-        .fetch-button:hover { background: #81C784; }
+        .access-button:hover { background: var(--accent-hover); }
+        .fetch-button:hover { background: var(--tertiary-hover); }
 
         .error-message {
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.3);
-            padding: clamp(0.4rem, 1.2vw, 0.6rem);
-            border-radius: 8px;
+            color: var(--primary);
+            background: rgba(30, 144, 255, 0.2);
+            padding: clamp(0.3rem, 1vw, 0.5rem);
+            border-radius: 6px;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
-            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.35);
+            transition: opacity 0.3s ease;
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+            box-shadow: 0 1px 6px rgba(30, 144, 255, 0.3);
             width: 94%;
             margin-left: 3%;
         }
@@ -237,15 +212,15 @@
 
         .history-panel {
             position: fixed;
-            top: 60px;
-            right: -300px;
-            width: min(80%, 300px);
-            height: calc(100% - 60px);
+            top: 50px;
+            right: -250px;
+            width: min(80%, 250px);
+            height: calc(100% - 50px);
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(255, 255, 255, 0.25);
-            padding: clamp(0.8rem, 2vw, 1rem);
-            transition: right 0.4s ease;
+            backdrop-filter: blur(15px);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            padding: clamp(0.6rem, 1.5vw, 0.8rem);
+            transition: right 0.3s ease;
             overflow-y: auto;
             z-index: 40;
         }
@@ -255,25 +230,25 @@
         }
 
         .history-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: clamp(0.4rem, 1.2vw, 0.6rem);
-            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
+            margin-bottom: 0.4rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .history-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.01);
         }
 
         .history-item p {
             margin: 0;
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
             color: var(--text);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -281,21 +256,21 @@
         }
 
         .history-item .delete-btn {
-            background: #A5D6A7;
+            background: var(--tertiary);
             border: none;
             border-radius: 50%;
-            width: clamp(18px, 3vw, 22px);
-            height: clamp(18px, 3vw, 22px);
+            width: clamp(16px, 2.5vw, 20px);
+            height: clamp(16px, 2.5vw, 20px);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .history-item .delete-btn:hover {
-            background: #81C784;
-            transform: scale(1.1);
+            background: var(--secondary);
+            transform: scale(1.05);
         }
 
         .background-overlay {
@@ -307,16 +282,16 @@
             z-index: -1;
             background-size: cover;
             background-position: center;
-            filter: blur(12px);
-            opacity: 0.45;
-            transition: background-image 1.2s ease, opacity 0.8s ease;
+            filter: blur(10px);
+            opacity: 0.4;
+            transition: background-image 0.8s ease, opacity 0.6s ease;
         }
 
         .suggestion-list {
             background: var(--glass-bg);
-            border-radius: 8px;
-            padding: clamp(0.4rem, 1.2vw, 0.6rem);
-            max-height: 150px;
+            border-radius: 6px;
+            padding: clamp(0.3rem, 1vw, 0.5rem);
+            max-height: 120px;
             overflow-y: auto;
             position: absolute;
             top: 100%;
@@ -328,16 +303,16 @@
         }
 
         .suggestion-item {
-            padding: clamp(0.3rem, 0.8vw, 0.4rem);
+            padding: clamp(0.2rem, 0.6vw, 0.3rem);
             cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
         }
 
         .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(3px);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(2px);
         }
 
         .permission-modal {
@@ -346,7 +321,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.6);
             display: none;
             justify-content: center;
             align-items: center;
@@ -359,76 +334,76 @@
 
         .modal-content {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            padding: clamp(1rem, 3vw, 1.5rem);
-            width: min(90%, 400px);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+            width: min(90%, 350px);
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
         .modal-content:hover {
-            transform: translateZ(15px) scale(1.02);
+            transform: translateZ(10px) scale(1.01);
         }
 
         .modal-content h2 {
             margin-top: 0;
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
             color: var(--text);
         }
 
         .modal-content p {
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
             color: var(--text);
-            margin-bottom: 1.2rem;
-            line-height: 1.4;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .modal-buttons {
             display: flex;
-            gap: clamp(0.8rem, 2vw, 1rem);
+            gap: clamp(0.6rem, 1.5vw, 0.8rem);
             justify-content: center;
         }
 
         .modal-button {
             background: var(--primary);
             border: none;
-            border-radius: 8px;
-            padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
+            border-radius: 6px;
+            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
             color: white;
             font-weight: 500;
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 10px rgba(30, 144, 255, 0.3);
         }
 
         .modal-button.cancel {
-            background: #A5D6A7;
+            background: var(--tertiary);
         }
 
         .modal-button:hover {
             background: var(--primary-hover);
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.6);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.5);
         }
 
         .modal-button.cancel:hover {
-            background: #81C784;
+            background: var(--secondary);
         }
 
         .analysis-panel {
             position: fixed;
-            bottom: -350px;
+            bottom: -300px;
             left: 0;
             width: 100%;
-            height: min(50vh, 350px);
+            height: min(40vh, 300px);
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
-            padding: clamp(0.8rem, 2vw, 1rem);
-            transition: bottom 0.4s ease;
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: clamp(0.6rem, 1.5vw, 0.8rem);
+            transition: bottom 0.3s ease;
             z-index: 40;
             overflow-y: auto;
         }
@@ -439,58 +414,58 @@
 
         .analysis-content {
             color: var(--text);
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
         }
 
         .analysis-content h3 {
             margin-top: 0;
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
         }
 
         .analysis-content p {
-            margin: 0.4rem 0;
-            line-height: 1.4;
+            margin: 0.3rem 0;
+            line-height: 1.3;
         }
 
         .security-panel {
             position: fixed;
-            top: -350px;
+            top: -300px;
             left: 0;
             width: 100%;
-            height: min(50vh, 350px);
+            height: min(40vh, 300px);
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-            padding: clamp(0.8rem, 2vw, 1rem);
-            transition: top 0.4s ease;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: clamp(0.6rem, 1.5vw, 0.8rem);
+            transition: top 0.3s ease;
             z-index: 40;
             overflow-y: auto;
         }
 
         .security-panel.open {
-            top: 60px;
+            top: 50px;
         }
 
         .security-content {
             color: var(--text);
-            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
         }
 
         .security-content h3 {
             margin-top: 0;
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
         }
 
         .security-content p {
-            margin: 0.4rem 0;
-            line-height: 1.4;
+            margin: 0.3rem 0;
+            line-height: 1.3;
         }
 
         @media (max-width: 600px) {
             .navbar {
                 flex-direction: column;
-                padding: 0.5rem;
-                gap: 0.5rem;
+                padding: 0.4rem;
+                gap: 0.4rem;
             }
 
             .nav-links {
@@ -499,7 +474,7 @@
             }
 
             .input-card {
-                padding: 0.8rem;
+                padding: 0.6rem;
             }
 
             .action-buttons {
@@ -509,7 +484,7 @@
 
         @media (min-width: 1200px) {
             .input-card {
-                width: 550px;
+                width: 500px;
             }
         }
     </style>
@@ -517,10 +492,9 @@
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <i class="fas fa-skull-crossbones"></i> Exploit Test Area
+            <i class="fas fa-skull-crossbones"></i> EduBypass
         </div>
         <div class="nav-links">
-            <a href="/home"><i class="fas fa-home"></i> Home</a>
             <a href="/cheats"><i class="fas fa-code"></i> Cheats</a>
             <a href="/about"><i class="fas fa-info-circle"></i> About</a>
             <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
@@ -608,7 +582,7 @@
                     { url: 'https://corsproxy.io/?', headers: { 'X-Origin-Auth': btoa('secure1' + Date.now()), 'X-Proxy-Key': this.generateKey(16), 'Cache-Control': 'no-store', 'X-Proxy-Layer': 'primary', 'X-Region': 'us-east-1' }, weight: 0.35, timeout: 6000, region: 'us-east', fallback: true, retryCount: 3, latency: 50, bandwidth: 1000 },
                     { url: 'https://api.allorigins.win/raw?url=', headers: { 'X-Custom-Token': btoa('secure2' + Math.random()), 'X-Proxy-Key': this.generateKey(16), 'Cache-Control': 'no-store', 'X-Proxy-Layer': 'secondary', 'X-Region': 'eu-west-2' }, weight: 0.30, timeout: 5500, region: 'eu-west', fallback: true, retryCount: 3, latency: 45, bandwidth: 1200 },
                     { url: 'https://proxy.custom/api/v1/', headers: { 'X-Session-Id': btoa(Date.now() + Math.random()), 'X-Proxy-Key': this.generateKey(16), 'Cache-Control': 'no-store', 'X-Proxy-Layer': 'tertiary', 'X-Region': 'ap-southeast-1' }, weight: 0.25, timeout: 5000, region: 'asia', fallback: false, retryCount: 2, latency: 40, bandwidth: 1500 },
-                    { url: 'https://mirrorproxy.net/process', headers: { 'X-Secure-Token': btoa('secure4' + Date.now()), 'X-Proxy-Key': this.generateKey(16), 'Cache-Control': 'no-store', 'X-Proxy-Layer': 'quaternary', 'X-Region': 'ca-central-1' }, weight: 0.10, timeout: 4500, region: 'ca-central', fallback: true, retryCount: 2, latency: 35, bandwidth: 1800 }
+                    { url: 'https://mirrorproxy.net/process?', headers: { 'X-Secure-Token': btoa('secure4' + Date.now()), 'X-Proxy-Key': this.generateKey(16), 'Cache-Control': 'no-store', 'X-Proxy-Layer': 'quaternary', 'X-Region': 'ca-central-1' }, weight: 0.10, timeout: 4500, region: 'ca-central', fallback: true, retryCount: 2, latency: 35, bandwidth: 1800 }
                 ];
                 this.encryptionKey = this.generateEncryptionKey();
                 this.sessionTokens = new Map();
@@ -649,12 +623,12 @@
                 this.domainInput.addEventListener('input', this.debounce(() => {
                     this.updateBackground();
                     this.updateSuggestions();
-                }, 120));
+                }, 100));
                 this.domainInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') this.handleAccessWebsite();
                 });
                 this.domainInput.addEventListener('focus', () => this.showSuggestions());
-                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 200));
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 150));
                 this.suggestionList.addEventListener('click', (e) => {
                     const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
                     if (suggestion) {
@@ -675,10 +649,10 @@
             }
 
             initAnimations() {
-                gsap.from('.navbar', { duration: 0.9, y: -50, opacity: 0, ease: 'power2.out' });
-                gsap.from('.input-card', { duration: 1.1, y: 50, opacity: 0, ease: 'power2.out' });
-                gsap.from('.domain-input', { duration: 0.9, delay: 0.1, x: -50, opacity: 0, ease: 'power2.out' });
-                gsap.from('.action-buttons', { duration: 0.9, delay: 0.2, x: 50, opacity: 0, ease: 'power2.out' });
+                gsap.from('.navbar', { duration: 0.7, y: -40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.input-card', { duration: 0.9, y: 40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.domain-input', { duration: 0.7, delay: 0.1, x: -40, opacity: 0, ease: 'power2.out' });
+                gsap.from('.action-buttons', { duration: 0.7, delay: 0.2, x: 40, opacity: 0, ease: 'power2.out' });
             }
 
             debounce(func, wait) {
@@ -693,13 +667,13 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) {
                     this.backgroundOverlay.style.backgroundImage = 'none';
-                    gsap.to(this.backgroundOverlay, { opacity: 0.45, duration: 1.2, ease: 'power2.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.4, duration: 0.8, ease: 'power2.inOut' });
                     return;
                 }
                 try {
-                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=96`;
+                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
                     this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
-                    gsap.to(this.backgroundOverlay, { opacity: 0.65, duration: 1.2, ease: 'power2.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.6, duration: 0.8, ease: 'power2.inOut' });
                 } catch {
                     this.backgroundOverlay.style.backgroundImage = 'none';
                 }
@@ -724,15 +698,15 @@
             showError(message) {
                 this.errorMessage.textContent = message;
                 this.errorMessage.classList.add('show');
-                gsap.to(this.errorMessage, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+                gsap.to(this.errorMessage, { opacity: 1, duration: 0.3, ease: 'power2.out' });
                 setTimeout(() => {
-                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => this.errorMessage.classList.remove('show') });
-                }, 3000);
+                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => this.errorMessage.classList.remove('show') });
+                }, 2500);
             }
 
             toggleHistoryPanel() {
                 this.historyPanel.classList.toggle('open');
-                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -300, duration: 0.4, ease: 'power2.inOut' });
+                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -250, duration: 0.3, ease: 'power2.inOut' });
             }
 
             renderHistory() {
@@ -763,16 +737,16 @@
                 this.domainInput.value = '';
                 this.updateBackground();
                 this.hideSuggestions();
-                gsap.to(this.domainInput, { scale: 0.96, duration: 0.2, ease: 'power2.in', yoyo: true, repeat: 1 });
+                gsap.to(this.domainInput, { scale: 0.98, duration: 0.15, ease: 'power2.in', yoyo: true, repeat: 1 });
             }
 
             showPermissionModal() {
                 this.permissionModal.classList.add('show');
-                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.9, opacity: 0, duration: 0.4, ease: 'power2.out' });
+                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.95, opacity: 0, duration: 0.3, ease: 'power2.out' });
             }
 
             hidePermissionModal() {
-                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.9, opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => this.permissionModal.classList.remove('show') });
+                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.95, opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => this.permissionModal.classList.remove('show') });
             }
 
             handleGrantPermission() {
@@ -802,7 +776,7 @@
                 document.body.appendChild(advancedModal);
                 document.getElementById('confirmAdvanced').addEventListener('click', () => {
                     this.permissionsGranted = true;
-                    document.body.style.background = 'linear-gradient(170deg, #2F6A31, #1B5E20)';
+                    document.body.style.background = 'linear-gradient(160deg, #1B263B, #0D1B2A)';
                     this.showError('Permissions fully granted!');
                     advancedModal.remove();
                 });
@@ -811,7 +785,7 @@
                     this.showError('Permissions declined.');
                     advancedModal.remove();
                 });
-                gsap.from(advancedModal.querySelector('.modal-content'), { scale: 0.9, opacity: 0, duration: 0.4, ease: 'power2.out' });
+                gsap.from(advancedModal.querySelector('.modal-content'), { scale: 0.95, opacity: 0, duration: 0.3, ease: 'power2.out' });
             }
 
             selectProxy(domain) {
@@ -857,7 +831,7 @@
                 return new Promise((resolve, reject) => {
                     const controller = new AbortController();
                     const id = setTimeout(() => controller.abort(), timeout);
-                    fetch(url, { ...options, signal: controller.signal, credentials: 'omit' }).then(response => {
+                    fetch(url, { ...options, signal: controller.signal, credentials: 'omit', cache: 'no-store' }).then(response => {
                         const proxyUrl = new URL(url).origin;
                         const currentPerf = this.proxyPerformance.get(proxyUrl) || 0;
                         this.proxyPerformance.set(proxyUrl, currentPerf + (response.ok ? 0.15 : -0.15));
@@ -875,7 +849,7 @@
                 const iframe = windowRef.document.createElement('iframe');
                 Object.assign(iframe.style, {
                     position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0, zIndex: 2147483647,
-                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.4s ease'
+                    backgroundColor: '#0D1B2A', border: 'none', transition: 'opacity 0.3s ease'
                 });
                 iframe.src = url;
                 iframe.style.opacity = '0';
@@ -884,9 +858,9 @@
 
             verifyIframeLoad(iframe) {
                 return new Promise((resolve, reject) => {
-                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: resolve });
+                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.3, ease: 'power2.out', onComplete: resolve });
                     iframe.onerror = () => reject(new Error('Failed to load'));
-                    setTimeout(() => reject(new Error('Load timeout')), 10000);
+                    setTimeout(() => reject(new Error('Load timeout')), 8000);
                 });
             }
 
@@ -894,13 +868,13 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 const url = `https://${domain}`;
-                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750');
+                const newWindow = window.open('about:blank', '_blank', 'width=1000,height=700');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.viewButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
+                    gsap.to(this.viewButton, { scale: 0.94, duration: 0.15, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(url);
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Location: ${pos.coords.latitude}, ${pos.coords.longitude}`));
@@ -912,8 +886,8 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
-                this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Performing advanced safety evaluation...</p>';
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.3, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Performing safety evaluation...</p>';
                 const proxy = this.selectProxy(domain);
                 const sessionToken = this.sessionTokens.get(btoa(domain + this.generateKey(6)).slice(0, 12));
                 const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Nonce': this.generateKey(8) };
@@ -954,8 +928,8 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.securityPanel.classList.add('open');
-                gsap.to(this.securityPanel, { top: 60, duration: 0.4, ease: 'power2.inOut' });
-                this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Conducting deep vulnerability assessment...</p>';
+                gsap.to(this.securityPanel, { top: 50, duration: 0.3, ease: 'power2.inOut' });
+                this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Conducting vulnerability assessment...</p>';
                 const proxy = this.selectProxy(domain);
                 const sessionToken = this.sessionTokens.get(btoa(domain + this.generateKey(6)).slice(0, 12));
                 const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Nonce': this.generateKey(8) };
@@ -1021,13 +995,13 @@
                     v: Math.random().toString(36).substr(2, 4)
                 }).toString();
                 const url = `${proxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
-                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750,noopener');
+                const newWindow = window.open('about:blank', '_blank', 'width=1000,height=700,noopener');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.accessButton, { scale: 0.92, duration: 0.2, yoyo: true, repeat: 1 });
+                    gsap.to(this.accessButton, { scale: 0.94, duration: 0.15, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(`https://${domain}`);
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Accessed from: ${pos.coords.latitude}, ${pos.coords.longitude}`));
@@ -1068,7 +1042,7 @@
                     v: Math.random().toString(36).substr(2, 4)
                 }).toString();
                 const url = `${updatedProxy.url}${encodeURIComponent(`https://${domain}`)}${pathLayer1}${pathLayer2}${pathLayer3}?${queryParams}`;
-                const newWindow = window.open('about:blank', '_blank', 'width=1100,height=750,noopener');
+                const newWindow = window.open('about:blank', '_blank', 'width=1000,height=700,noopener');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
@@ -1091,8 +1065,8 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.4, ease: 'power2.inOut' });
-                this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving advanced code structures...</p>';
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.3, ease: 'power2.inOut' });
+                this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code structures...</p>';
                 const proxy = this.selectProxy(domain);
                 const sessionToken = this.sessionTokens.get(btoa(domain + this.generateKey(6)).slice(0, 12));
                 const headers = { ...proxy.headers, 'X-Session-Token': sessionToken, 'X-Timestamp': Date.now().toString(), 'X-Nonce': this.generateKey(8) };
@@ -1104,10 +1078,10 @@
                         const inlineStyles = data.match(/style="[^"]*"/gi)?.join('\n') || 'No inline styles';
                         this.analysisContent.innerHTML = `
                             <h3>${domain} Code</h3>
-                            <p><strong>Scripts:</strong></p><pre>${scripts.slice(0, 600)}</pre>
-                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts.slice(0, 600)}</pre>
-                            <p><strong>Styles:</strong></p><pre>${styles.slice(0, 600)}</pre>
-                            <p><strong>Inline Styles:</strong></p><pre>${inlineStyles.slice(0, 600)}</pre>
+                            <p><strong>Scripts:</strong></p><pre>${scripts.slice(0, 500)}</pre>
+                            <p><strong>Inline Scripts:</strong></p><pre>${inlineScripts.slice(0, 500)}</pre>
+                            <p><strong>Styles:</strong></p><pre>${styles.slice(0, 500)}</pre>
+                            <p><strong>Inline Styles:</strong></p><pre>${inlineStyles.slice(0, 500)}</pre>
                         `;
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Fetch Failed</h3><p>${e.message}</p>`;
