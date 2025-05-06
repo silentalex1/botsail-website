@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary: #a78bfa;
-            --primary-hover: #8b5cf6;
-            --accent: #14b8a6;
-            --accent-hover: #0d9488;
-            --secondary: #3b82f6;
-            --secondary-hover: #2563eb;
-            --tertiary: #9333ea;
-            --tertiary-hover: #7c2d9b;
-            --text: #f3f4f6;
-            --bg-dark: #0e1a2a;
-            --bg-light: #182a3c;
-            --glass-bg: rgba(24, 42, 60, 0.95);
-            --shadow: 0 15px 60px rgba(0, 0, 0, 0.7);
-            --glow: 0 0 15px rgba(167, 139, 250, 0.6);
-            --error-bg: rgba(248, 113, 113, 0.3);
-            --navbar-bg: rgba(14, 26, 42, 0.98);
+            --primary: #c4b5fd;
+            --primary-hover: #a78bfa;
+            --accent: #2dd4bf;
+            --accent-hover: #14b8a6;
+            --secondary: #60a5fa;
+            --secondary-hover: #3b82f6;
+            --tertiary: #a855f7;
+            --tertiary-hover: #9333ea;
+            --text: #e5e7eb;
+            --bg-dark: #0a1422;
+            --bg-light: #132032;
+            --glass-bg: rgba(19, 32, 50, 0.94);
+            --shadow: 0 20px 80px rgba(0, 0, 0, 0.75);
+            --glow: 0 0 20px rgba(167, 139, 250, 0.7);
+            --error-bg: rgba(239, 68, 68, 0.4);
+            --navbar-bg: rgba(10, 20, 34, 0.97);
         }
 
         body {
@@ -30,186 +30,207 @@
             min-height: 100vh;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
-            background: linear-gradient(175deg, var(--bg-dark), var(--bg-light));
+            background: linear-gradient(170deg, var(--bg-dark), var(--bg-light));
             overflow-x: hidden;
-            perspective: 1000px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background 1.5s ease;
+            perspective: 1200px;
+            transition: background 2s ease;
         }
 
         .navbar {
             background: var(--navbar-bg);
-            backdrop-filter: blur(20px);
-            padding: 0.8rem 0.5rem;
+            backdrop-filter: blur(25px);
+            padding: 0.9rem 0.6rem;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.25);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 50;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
         }
 
         .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            margin-left: 0.8rem;
+            gap: 0.7rem;
+            margin-left: 0.9rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.6rem;
-            margin-left: 0.8rem;
+            gap: 0.7rem;
+            margin-left: 0.9rem;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .nav-links a:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 4px 10px rgba(167, 139, 250, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.6);
         }
 
         .container {
             position: relative;
-            min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 65px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 3;
-            padding-top: 60px;
-            padding-bottom: 15px;
+            padding-top: 65px;
+            padding-bottom: 20px;
         }
 
         .input-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            padding: 2rem;
-            width: min(90%, 500px);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 2.5rem;
+            width: min(92%, 550px);
             box-shadow: var(--shadow);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.35);
             transform-style: preserve-3d;
-            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            transition: transform 0.7s ease, box-shadow 0.7s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .input-card:hover {
-            transform: translateZ(40px) scale(1.04);
-            box-shadow: 0 20px 70px rgba(167, 139, 250, 0.8);
+            transform: translateZ(50px) scale(1.05);
+            box-shadow: 0 25px 90px rgba(167, 139, 250, 0.9);
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
             width: 100%;
         }
 
         .domain-input {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 15px;
-            padding: 0.9rem 1.5rem;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            border-radius: 18px;
+            padding: 1rem 2rem;
             color: var(--text);
-            font-size: 1rem;
+            font-size: 1.1rem;
             outline: none;
-            transition: all 0.4s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-            margin-left: 10%;
-            width: 80%;
+            transition: all 0.5s ease;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25), var(--glow);
+            margin-left: 8%;
+            width: 84%;
+            font-weight: 500;
         }
 
         .domain-input:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: var(--glow), inset 0 1px 3px rgba(167, 139, 250, 0.2);
-            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: var(--glow), inset 0 2px 4px rgba(167, 139, 250, 0.3);
+            transform: scale(1.03);
+            border-color: var(--primary);
         }
 
         .domain-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 400;
         }
 
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
-            width: 80%;
-            margin-left: 10%;
+            width: 84%;
+            margin-left: 8%;
         }
 
         .view-button, .history-button, .clear-button, .permission-button, .analyze-button, .security-button, .access-button, .fetch-button {
             background: var(--primary);
             border: none;
-            border-radius: 15px;
-            padding: 0.7rem 1.5rem;
+            border-radius: 18px;
+            padding: 0.8rem 1.7rem;
             color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.6);
+            gap: 0.6rem;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-button::before, .history-button::before, .clear-button::before, .permission-button::before, .analyze-button::before, .security-button::before, .access-button::before, .fetch-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .view-button:hover::before, .history-button:hover::before, .clear-button:hover::before, .permission-button:hover::before, .analyze-button:hover::before, .security-button:hover::before, .access-button:hover::before, .fetch-button:hover::before {
+            width: 300%;
+            height: 300%;
         }
 
         .history-button { background: var(--accent); }
-        .clear-button { background: #f87171; }
-        .permission-button { background: #eab308; }
+        .clear-button { background: #ef4444; }
+        .permission-button { background: #facc15; }
         .analyze-button { background: var(--secondary); }
         .security-button { background: var(--tertiary); }
         .access-button { background: #10b981; }
-        .fetch-button { background: #6366f1; }
+        .fetch-button { background: #818cf8; }
 
         .view-button:hover, .history-button:hover, .clear-button:hover, .permission-button:hover, .analyze-button:hover, .security-button:hover, .access-button:hover, .fetch-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.8);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.9);
         }
 
         .view-button:hover { background: var(--primary-hover); }
         .history-button:hover { background: var(--accent-hover); }
         .clear-button:hover { background: #dc2626; }
-        .permission-button:hover { background: #ca8a04; }
+        .permission-button:hover { background: #eab308; }
         .analyze-button:hover { background: var(--secondary-hover); }
         .security-button:hover { background: var(--tertiary-hover); }
         .access-button:hover { background: #059669; }
-        .fetch-button:hover { background: #4f46e5; }
+        .fetch-button:hover { background: #6366f1; }
 
         .error-message {
-            color: #f87171;
+            color: #ef4444;
             background: var(--error-bg);
-            padding: 0.7rem;
-            border-radius: 12px;
+            padding: 0.8rem;
+            border-radius: 15px;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(248, 113, 113, 0.4);
-            width: 80%;
-            margin-left: 10%;
+            transition: opacity 0.6s ease;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.5);
+            width: 84%;
+            margin-left: 8%;
         }
 
         .error-message.show {
@@ -218,15 +239,15 @@
 
         .history-panel {
             position: fixed;
-            top: 60px;
-            right: -350px;
-            width: 300px;
-            height: calc(100% - 60px);
+            top: 65px;
+            right: -400px;
+            width: 350px;
+            height: calc(100% - 65px);
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-left: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.5rem;
-            transition: right 0.5s ease;
+            backdrop-filter: blur(30px);
+            border-left: 2px solid rgba(255, 255, 255, 0.35);
+            padding: 1.8rem;
+            transition: right 0.6s ease;
             overflow-y: auto;
             z-index: 40;
         }
@@ -236,22 +257,25 @@
         }
 
         .history-item {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 0.7rem;
-            margin-bottom: 0.7rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .history-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.04);
         }
 
         .history-item p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -259,21 +283,21 @@
         }
 
         .history-item .delete-btn {
-            background: #f87171;
+            background: #ef4444;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .history-item .delete-btn:hover {
             background: #dc2626;
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .background-overlay {
@@ -285,36 +309,36 @@
             z-index: -1;
             background-size: cover;
             background-position: center;
-            filter: blur(15px);
-            opacity: 0.5;
-            transition: background-image 1.5s ease, opacity 1s ease;
+            filter: blur(18px);
+            opacity: 0.55;
+            transition: background-image 2s ease, opacity 1.2s ease;
         }
 
         .suggestion-list {
             background: var(--glass-bg);
-            border-radius: 12px;
-            padding: 0.7rem;
-            max-height: 150px;
+            border-radius: 15px;
+            padding: 0.8rem;
+            max-height: 180px;
             overflow-y: auto;
             position: absolute;
             top: 100%;
-            left: 10%;
-            right: 10%;
+            left: 8%;
+            right: 8%;
             display: none;
             z-index: 20;
             box-shadow: var(--shadow);
         }
 
         .suggestion-item {
-            padding: 0.5rem;
+            padding: 0.6rem;
             cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            transition: all 0.4s ease;
         }
 
         .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
         }
 
         .permission-modal {
@@ -323,7 +347,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             display: none;
             justify-content: center;
             align-items: center;
@@ -336,59 +360,59 @@
 
         .modal-content {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            width: min(90%, 450px);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            width: min(92%, 500px);
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.6s ease;
+            transition: transform 0.7s ease;
         }
 
         .modal-content:hover {
-            transform: translateZ(30px) scale(1.03);
+            transform: translateZ(40px) scale(1.04);
         }
 
         .modal-content h2 {
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: var(--text);
         }
 
         .modal-content p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text);
-            margin-bottom: 2rem;
-            line-height: 1.5;
+            margin-bottom: 2.2rem;
+            line-height: 1.6;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.8rem;
             justify-content: center;
         }
 
         .modal-button {
             background: var(--primary);
             border: none;
-            border-radius: 12px;
-            padding: 0.7rem 1.5rem;
+            border-radius: 15px;
+            padding: 0.8rem 1.8rem;
             color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(167, 139, 250, 0.6);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.7);
         }
 
         .modal-button.cancel {
-            background: #f87171;
+            background: #ef4444;
         }
 
         .modal-button:hover {
             background: var(--primary-hover);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.8);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.9);
         }
 
         .modal-button.cancel:hover {
@@ -397,15 +421,15 @@
 
         .analysis-panel {
             position: fixed;
-            bottom: -400px;
+            bottom: -450px;
             left: 0;
             width: 100%;
-            height: 350px;
+            height: 400px;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.5rem;
-            transition: bottom 0.5s ease;
+            backdrop-filter: blur(25px);
+            border-top: 2px solid rgba(255, 255, 255, 0.35);
+            padding: 1.8rem;
+            transition: bottom 0.6s ease;
             z-index: 40;
             overflow-y: auto;
         }
@@ -416,51 +440,51 @@
 
         .analysis-content {
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .analysis-content h3 {
             margin-top: 0;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         .analysis-content p {
-            margin: 0.5rem 0;
-            line-height: 1.4;
+            margin: 0.6rem 0;
+            line-height: 1.5;
         }
 
         .security-panel {
             position: fixed;
-            top: -350px;
+            top: -400px;
             left: 0;
             width: 100%;
-            height: 300px;
+            height: 350px;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.5rem;
-            transition: top 0.5s ease;
+            backdrop-filter: blur(25px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+            padding: 1.8rem;
+            transition: top 0.6s ease;
             z-index: 40;
             overflow-y: auto;
         }
 
         .security-panel.open {
-            top: 60px;
+            top: 65px;
         }
 
         .security-content {
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .security-content h3 {
             margin-top: 0;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         .security-content p {
-            margin: 0.5rem 0;
-            line-height: 1.4;
+            margin: 0.6rem 0;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -474,7 +498,6 @@
             <a href="/cheats"><i class="fas fa-code"></i> Cheats</a>
             <a href="/about"><i class="fas fa-info-circle"></i> About</a>
             <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="/support"><i class="fas fa-headset"></i> Support</a>
         </div>
     </nav>
     <div class="background-overlay" id="backgroundOverlay"></div>
@@ -553,10 +576,14 @@
                 this.securityContent = document.getElementById('securityContent');
                 this.validUrlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
                 this.history = JSON.parse(localStorage.getItem('domainHistory')) || [];
-                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com'];
+                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org', 'x.com', 'youtube.com', 'reddit.com'];
                 this.permissionsGranted = false;
-                this.proxyChain = ['https://cors-anywhere.herokuapp.com/', 'https://api.allorigins.win/get?url=', 'https://proxy.cors.sh/'];
-                this.encryptionKey = btoa('x7k9p2m4q8j5v3n1r6t0y2w4z6u8i0o');
+                this.proxyChain = [
+                    'https://corsproxy.io/?',
+                    'https://api.allorigins.win/raw?url=',
+                    'https://corsproxy.org/?'
+                ];
+                this.encryptionKey = btoa(Math.random().toString(36).slice(2) + Date.now());
                 this.initEventListeners();
                 this.initAnimations();
                 this.renderHistory();
@@ -576,12 +603,12 @@
                 this.domainInput.addEventListener('input', this.debounce(() => {
                     this.updateBackground();
                     this.updateSuggestions();
-                }, 200));
+                }, 150));
                 this.domainInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') this.handleAccessWebsite();
                 });
                 this.domainInput.addEventListener('focus', () => this.showSuggestions());
-                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 150));
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 100));
                 this.suggestionList.addEventListener('click', (e) => {
                     const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
                     if (suggestion) {
@@ -602,10 +629,10 @@
             }
 
             initAnimations() {
-                gsap.from('.navbar', { duration: 1, y: -80, opacity: 0, ease: 'power2.out' });
-                gsap.from('.input-card', { duration: 1.2, y: 100, opacity: 0, ease: 'power2.out' });
-                gsap.from('.domain-input', { duration: 1, delay: 0.3, x: -80, opacity: 0, ease: 'power2.out' });
-                gsap.from('.action-buttons', { duration: 1, delay: 0.4, x: 80, opacity: 0, ease: 'power2.out' });
+                gsap.from('.navbar', { duration: 1.2, y: -90, opacity: 0, ease: 'power3.out' });
+                gsap.from('.input-card', { duration: 1.5, y: 120, opacity: 0, ease: 'power3.out' });
+                gsap.from('.domain-input', { duration: 1.2, delay: 0.2, x: -90, opacity: 0, ease: 'power3.out' });
+                gsap.from('.action-buttons', { duration: 1.2, delay: 0.3, x: 90, opacity: 0, ease: 'power3.out' });
             }
 
             debounce(func, wait) {
@@ -620,13 +647,13 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) {
                     this.backgroundOverlay.style.backgroundImage = 'none';
-                    gsap.to(this.backgroundOverlay, { opacity: 0.5, duration: 1.5, ease: 'power2.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.55, duration: 2, ease: 'power3.inOut' });
                     return;
                 }
                 try {
                     const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=256`;
                     this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
-                    gsap.to(this.backgroundOverlay, { opacity: 0.7, duration: 1.5, ease: 'power2.inOut' });
+                    gsap.to(this.backgroundOverlay, { opacity: 0.75, duration: 2, ease: 'power3.inOut' });
                 } catch {
                     this.backgroundOverlay.style.backgroundImage = 'none';
                 }
@@ -651,19 +678,19 @@
             showError(message) {
                 this.errorMessage.textContent = message;
                 this.errorMessage.classList.add('show');
-                gsap.to(this.errorMessage, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+                gsap.to(this.errorMessage, { opacity: 1, duration: 0.6, ease: 'power3.out' });
                 setTimeout(() => {
-                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.5, ease: 'power2.in', onComplete: () => this.errorMessage.classList.remove('show') });
-                }, 5000);
+                    gsap.to(this.errorMessage, { opacity: 0, duration: 0.6, ease: 'power3.in', onComplete: () => this.errorMessage.classList.remove('show') });
+                }, 4500);
             }
 
             toggleHistoryPanel() {
                 this.historyPanel.classList.toggle('open');
-                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -350, duration: 0.5, ease: 'power2.inOut' });
+                gsap.to(this.historyPanel, { right: this.historyPanel.classList.contains('open') ? 0 : -400, duration: 0.6, ease: 'power3.inOut' });
             }
 
             renderHistory() {
-                this.historyList.innerHTML = this.history.slice(0, 10).map(domain => `
+                this.historyList.innerHTML = this.history.slice(0, 12).map(domain => `
                     <div class="history-item" data-domain="${domain}">
                         <p>${domain}</p>
                         <button class="delete-btn"><i class="fas fa-times"></i></button>
@@ -674,7 +701,7 @@
             saveToHistory(domain) {
                 if (!this.history.includes(domain)) {
                     this.history.unshift(domain);
-                    this.history = this.history.slice(0, 50);
+                    this.history = this.history.slice(0, 60);
                     localStorage.setItem('domainHistory', JSON.stringify(this.history));
                     this.renderHistory();
                 }
@@ -690,26 +717,26 @@
                 this.domainInput.value = '';
                 this.updateBackground();
                 this.hideSuggestions();
-                gsap.to(this.domainInput, { scale: 0.95, duration: 0.3, ease: 'power2.in', yoyo: true, repeat: 1 });
+                gsap.to(this.domainInput, { scale: 0.94, duration: 0.4, ease: 'power3.in', yoyo: true, repeat: 1 });
             }
 
             showPermissionModal() {
                 this.permissionModal.classList.add('show');
-                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.6, ease: 'power2.out' });
+                gsap.from(this.permissionModal.querySelector('.modal-content'), { scale: 0.7, opacity: 0, duration: 0.7, ease: 'power3.out' });
             }
 
             hidePermissionModal() {
-                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.8, opacity: 0, duration: 0.6, ease: 'power2.in', onComplete: () => this.permissionModal.classList.remove('show') });
+                gsap.to(this.permissionModal.querySelector('.modal-content'), { scale: 0.7, opacity: 0, duration: 0.7, ease: 'power3.in', onComplete: () => this.permissionModal.classList.remove('show') });
             }
 
             handleGrantPermission() {
                 if ('clipboard' in navigator && 'geolocation' in navigator) {
                     this.permissionsGranted = true;
                     this.hidePermissionModal();
-                    this.showError('Permissions granted! All features activated.');
+                    this.showError('Permissions granted! Advanced features enabled.');
                     if ('Notification' in window) Notification.requestPermission();
                 } else {
-                    this.showError('Permission request not supported on this browser.');
+                    this.showError('Permission requests not supported in this browser.');
                 }
             }
 
@@ -717,7 +744,7 @@
                 const iframe = windowRef.document.createElement('iframe');
                 Object.assign(iframe.style, {
                     position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0, zIndex: 2147483647,
-                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.5s ease'
+                    backgroundColor: 'white', border: 'none', transition: 'opacity 0.6s ease'
                 });
                 iframe.src = url;
                 iframe.style.opacity = '0';
@@ -726,22 +753,22 @@
 
             verifyIframeLoad(iframe) {
                 return new Promise((resolve, reject) => {
-                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.5, ease: 'power2.out', onComplete: resolve });
+                    iframe.onload = () => gsap.to(iframe, { opacity: 1, duration: 0.6, ease: 'power3.out', onComplete: resolve });
                     iframe.onerror = () => reject(new Error('Failed to load'));
-                    setTimeout(() => reject(new Error('Load timeout')), 20000);
+                    setTimeout(() => reject(new Error('Load timeout')), 25000);
                 });
             }
 
             handleViewWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
-                const newWindow = window.open('', '_blank', 'width=1200,height=800');
+                const newWindow = window.open('', '_blank', 'width=1250,height=850');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, domain);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.viewButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
+                    gsap.to(this.viewButton, { scale: 0.88, duration: 0.4, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(domain).catch(() => {});
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Location: ${pos.coords.latitude}, ${pos.coords.longitude}`));
@@ -754,26 +781,32 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power2.inOut' });
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.6, ease: 'power3.inOut' });
                 this.analysisContent.innerHTML = '<h3>Analyzing...</h3><p>Evaluating safety...</p>';
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                fetch(`${this.proxyChain[1]}${encodeURIComponent(domain)}`, { mode: 'cors' })
                     .then(r => r.json()).then(d => {
                         const doc = new DOMParser().parseFromString(d.contents, 'text/html');
                         const title = doc.querySelector('title')?.textContent || 'No title';
+                        const metaDesc = doc.querySelector('meta[name="description"]')?.content || 'No description';
                         const links = doc.querySelectorAll('a').length;
                         const scripts = doc.querySelectorAll('script').length;
+                        const images = doc.querySelectorAll('img').length;
                         const hasHTTPS = domain.startsWith('https://');
-                        const safety = 100 - (scripts * 5 + (links > 50 ? 10 : 0) - (hasHTTPS ? 20 : 0));
-                        const isSafe = safety > 70;
+                        const suspicious = ['eval(', 'document.write', 'onerror'].some(k => d.contents.includes(k));
+                        const safety = Math.min(100, 100 - (scripts * 4 + (links > 60 ? 15 : 0) + (images > 30 ? 10 : 0) + (suspicious ? 25 : 0) - (hasHTTPS ? 25 : 0)));
+                        const isSafe = safety > 75;
                         this.analysisContent.innerHTML = `
                             <h3>${domain}</h3>
                             <p>Title: ${title}</p>
+                            <p>Description: ${metaDesc}</p>
                             <p>Links: ${links}</p>
                             <p>Scripts: ${scripts}</p>
+                            <p>Images: ${images}</p>
                             <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
+                            <p>Suspicious Code: ${suspicious ? 'Detected' : 'None'}</p>
                             <p>Safety: ${safety}% - ${isSafe ? 'Safe' : 'Caution'}</p>
                         `;
-                        if (!isSafe) this.showError('Potentially unsafe.');
+                        if (!isSafe) this.showError('Potentially unsafe. Use caution.');
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
                         this.showError('Analysis failed.');
@@ -784,23 +817,27 @@
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.securityPanel.classList.add('open');
-                gsap.to(this.securityPanel, { top: 60, duration: 0.5, ease: 'power2.inOut' });
+                gsap.to(this.securityPanel, { top: 65, duration: 0.6, ease: 'power3.inOut' });
                 this.securityContent.innerHTML = '<h3>Scanning...</h3><p>Checking security...</p>';
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                fetch(`${this.proxyChain[1]}${encodeURIComponent(domain)}`, { mode: 'cors' })
                     .then(r => r.json()).then(d => {
                         const doc = new DOMParser().parseFromString(d.contents, 'text/html');
                         const hasHTTPS = domain.startsWith('https://');
                         const forms = doc.querySelectorAll('form').length;
                         const inputs = doc.querySelectorAll('input').length;
-                        const security = 100 - (forms * 5 + inputs * 2 - (hasHTTPS ? 25 : 0));
+                        const externalScripts = Array.from(doc.querySelectorAll('script[src]')).map(s => s.src).filter(s => !s.includes(domain));
+                        const cookies = document.cookie.split(';').length;
+                        const security = Math.min(100, 100 - (forms * 6 + inputs * 3 + externalScripts.length * 8 + (cookies > 8 ? 20 : 0) - (hasHTTPS ? 30 : 0)));
                         this.securityContent.innerHTML = `
                             <h3>${domain}</h3>
                             <p>HTTPS: ${hasHTTPS ? 'Yes' : 'No'}</p>
                             <p>Forms: ${forms}</p>
                             <p>Inputs: ${inputs}</p>
+                            <p>External Scripts: ${externalScripts.length}</p>
+                            <p>Cookies: ${cookies}</p>
                             <p>Security: ${security}%</p>
                         `;
-                        if (security < 70) this.showError('Possible security risks.');
+                        if (security < 75) this.showError('Possible security risks detected.');
                     }).catch(e => {
                         this.securityContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
                         this.showError('Scan failed.');
@@ -810,38 +847,81 @@
             handleAccessWebsite() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
-                const proxy = this.proxyChain[Math.floor(Math.random() * this.proxyChain.length)];
-                const encoded = btoa(domain).split('').reverse().join('');
-                const url = `${proxy}${encodeURIComponent(this.xorEncrypt(encoded, this.encryptionKey))}&t=${Date.now()}`;
-                const newWindow = window.open('', '_blank', 'width=1200,height=800');
+                const proxyIndex = Math.floor(Math.random() * this.proxyChain.length);
+                let proxy = this.proxyChain[proxyIndex];
+                const timestamp = Date.now().toString(36);
+                const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
+                const encodedDomain = btoa(domain).split('').reverse().join('');
+                const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce);
+                const dynamicPorts = [8080, 8443, 9443, 2053];
+                const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
+                const randomSub = `x${Math.random().toString(36).substr(2, 10)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
+                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const url = `${proxy}${encodeURIComponent(obfuscated)}${pathLayer1}${pathLayer2}?nonce=${nonce}&t=${timestamp}&port=${port}&sub=${randomSub}`;
+                const newWindow = window.open('', '_blank', 'width=1250,height=850');
                 if (!newWindow) return this.showError('Pop-up blocked.');
                 const iframe = this.createIframe(newWindow, url);
                 newWindow.document.body.appendChild(iframe);
                 this.verifyIframeLoad(iframe).then(() => {
                     this.saveToHistory(domain);
-                    gsap.to(this.accessButton, { scale: 0.9, duration: 0.3, yoyo: true, repeat: 1 });
+                    gsap.to(this.accessButton, { scale: 0.88, duration: 0.4, yoyo: true, repeat: 1 });
                     if (this.permissionsGranted) {
                         navigator.clipboard.writeText(domain).catch(() => {});
                         navigator.geolocation.getCurrentPosition(pos => this.showError(`Accessed from: ${pos.coords.latitude}, ${pos.coords.longitude}`));
                         new Notification('Accessed', { body: `${domain} accessed`, icon: `https://www.google.com/s2/favicons?domain=${domain}` });
                     }
-                }).catch(e => this.showError(`Access failed: ${e.message}`));
+                }).catch(e => this.retryAccess(domain, proxyIndex, e));
+            }
+
+            retryAccess(domain, prevIndex, error) {
+                this.showError(`Access failed: ${error.message}. Retrying...`);
+                const proxyIndex = (prevIndex + 1) % this.proxyChain.length;
+                let proxy = this.proxyChain[proxyIndex];
+                const timestamp = Date.now().toString(36);
+                const nonce = btoa(Math.random().toString(36) + timestamp).replace(/=/g, '');
+                const encodedDomain = btoa(domain.split('').reverse().join(''));
+                const obfuscated = this.xorEncrypt(encodedDomain, this.encryptionKey + nonce + timestamp);
+                const dynamicPorts = [8080, 8443, 9443, 2053];
+                const port = dynamicPorts[Math.floor(Math.random() * dynamicPorts.length)];
+                const randomSub = `x${Math.random().toString(36).substr(2, 12)}`;
+                const pathLayer1 = `/v${Math.floor(Math.random() * 10000)}/p${Math.floor(Math.random() * 9999)}`;
+                const pathLayer2 = `/r${btoa(Math.random().toString(36)).replace(/=/g, '')}`;
+                const pathLayer3 = `/s${Math.random().toString(36).substr(2, 8)}`;
+                const url = `${proxy}${encodeURIComponent(obfuscated)}${pathLayer1}${pathLayer2}${pathLayer3}?nonce=${nonce}&t=${timestamp}&port=${port}&sub=${randomSub}`;
+                const newWindow = window.open('', '_blank', 'width=1250,height=850');
+                if (!newWindow) return this.showError('Pop-up blocked.');
+                const iframe = this.createIframe(newWindow, url);
+                newWindow.document.body.appendChild(iframe);
+                this.verifyIframeLoad(iframe).then(() => {
+                    this.saveToHistory(domain);
+                }).catch(e => this.showError(`Retry failed: ${e.message}`));
             }
 
             xorEncrypt(text, key) {
-                return text.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ key[i % key.length].charCodeAt(0))).join('');
+                let result = '';
+                for (let i = 0; i < text.length; i++) {
+                    const charCode = text.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+                    result += String.fromCharCode(charCode);
+                }
+                return btoa(result);
             }
 
             handleFetchCode() {
                 const domain = this.sanitizeDomain(this.domainInput.value);
                 if (!domain) return this.showError('Enter a valid domain.');
                 this.analysisPanel.classList.add('open');
-                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.5, ease: 'power2.inOut' });
+                gsap.to(this.analysisPanel, { bottom: 0, duration: 0.6, ease: 'power3.inOut' });
                 this.analysisContent.innerHTML = '<h3>Fetching...</h3><p>Retrieving code...</p>';
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(domain)}`, { mode: 'cors' })
+                fetch(`${this.proxyChain[1]}${encodeURIComponent(domain)}`, { mode: 'cors' })
                     .then(r => r.json()).then(d => {
-                        const code = d.contents.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
-                        this.analysisContent.innerHTML = `<h3>${domain} Code</h3><pre>${code}</pre>`;
+                        const scripts = d.contents.match(/<script[^>]*>[\s\S]*?<\/script>/gi)?.join('\n') || 'No scripts found';
+                        const styles = d.contents.match(/<style[^>]*>[\s\S]*?<\/style>/gi)?.join('\n') || 'No styles found';
+                        this.analysisContent.innerHTML = `
+                            <h3>${domain} Code</h3>
+                            <p><strong>Scripts:</strong></p><pre>${scripts}</pre>
+                            <p><strong>Styles:</strong></p><pre>${styles}</pre>
+                        `;
                     }).catch(e => {
                         this.analysisContent.innerHTML = `<h3>Failed</h3><p>${e.message}</p>`;
                         this.showError('Code fetch failed.');
