@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #a78bfa;
+            --primary-hover: #8b5cf6;
+            --accent: #14b8a6;
+            --accent-hover: #0d9488;
+            --text: #f3f4f6;
+            --bg-dark: #0f172a;
+            --bg-light: #1f293b;
+            --glass-bg: rgba(31, 41, 59, 0.94);
+            --shadow: 0 35px 120px rgba(0, 0, 0, 0.75);
+            --glow: 0 0 25px rgba(167, 139, 250, 0.6);
+            --error-bg: rgba(248, 113, 113, 0.25);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: linear-gradient(155deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            overflow: hidden;
+            perspective: 1500px;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .input-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(50px);
+            border-radius: 50px;
+            padding: 3.5rem;
+            width: min(95%, 800px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            transform-style: preserve-3d;
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s ease;
+        }
+
+        .input-card:hover {
+            transform: translateZ(100px) scale(1.1);
+            box-shadow: 0 50px 150px rgba(167, 139, 250, 1);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .domain-input {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 25px;
+            padding: 1.5rem 2.5rem;
+            color: var(--text);
+            font-size: 1.3rem;
+            outline: none;
+            transition: all 0.6s ease;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .domain-input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: var(--glow);
+            transform: scale(1.03);
+        }
+
+        .domain-input::placeholder {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .view-button, .history-button, .clear-button {
+            background: var(--primary);
+            border: none;
+            border-radius: 25px;
+            padding: 1.3rem 2.5rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 40px rgba(167, 139, 250, 0.9);
+        }
+
+        .history-button {
+            background: var(--accent);
+        }
+
+        .clear-button {
+            background: #f87171;
+        }
+
+        .view-button:hover, .history-button:hover, .clear-button:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(167, 139, 250, 1);
+        }
+
+        .view-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .history-button:hover {
+            background: var(--accent-hover);
+        }
+
+        .clear-button:hover {
+            background: #dc2626;
+        }
+
+        .error-message {
+            color: #f87171;
+            background: var(--error-bg);
+            padding: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(248, 113, 113, 0.3);
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        .history-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 400px;
+            height: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(50px);
+            border-left: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 2.5rem;
+            transition: right 0.6s ease;
+            overflow-y: auto;
+            z-index: 20;
+        }
+
+        .history-panel.open {
+            right: 0;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .history-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-item .delete-btn {
+            background: #f87171;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .history-item .delete-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            opacity: 0.5;
+            transition: background-image 2s ease, opacity 1.5s ease;
+        }
+
+        .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .suggestion-list {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 10;
+        }
+
+        .suggestion-item {
+            padding: 0.8rem;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+        }
+
+        .suggestion-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    <div class="background-overlay" id="backgroundOverlay"></div>
+    <div class="container">
+        <div class="input-card">
+            <div class="input-group">
+                <div style="position: relative;">
+                    <input type="text" class="domain-input" id="domainInput" placeholder="Enter any domain...">
+                    <div class="suggestion-list" id="suggestionList"></div>
+                </div>
+                <div class="action-buttons">
+                    <button class="view-button" id="viewButton">
+                        <i class="fas fa-globe"></i> View Website
+                    </button>
+                    <button class="history-button" id="historyButton">
+                        <i class="fas fa-history"></i> History
+                    </button>
+                    <button class="clear-button" id="clearButton">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+        </div>
+    </div>
+    <div class="history-panel" id="historyPanel">
+        <h3 style="color: var(--text); margin-top: 0; font-size: 1.5rem;">Recent Domains</h3>
+        <div id="historyList"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        class WebViewer {
+            constructor() {
+                this.domainInput = document.getElementById('domainInput');
+                this.viewButton = document.getElementById('viewButton');
+                this.historyButton = document.getElementById('historyButton');
+                this.clearButton = document.getElementById('clearButton');
+                this.errorMessage = document.getElementById('errorMessage');
+                this.backgroundOverlay = document.getElementById('backgroundOverlay');
+                this.historyPanel = document.getElementById('historyPanel');
+                this.historyList = document.getElementById('historyList');
+                this.suggestionList = document.getElementById('suggestionList');
+                this.particleCanvas = document.getElementById('particleCanvas');
+                this.validUrlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
+                this.history = JSON.parse(localStorage.getItem('domainHistory')) || [];
+                this.particles = [];
+                this.suggestions = ['example.com', 'google.com', 'github.com', 'wikipedia.org'];
+                this.initEventListeners();
+                this.initAnimations();
+                this.initParticles();
+                this.renderHistory();
+            }
+
+            initEventListeners() {
+                this.viewButton.addEventListener('click', () => this.handleViewWebsite());
+                this.historyButton.addEventListener('click', () => this.toggleHistoryPanel());
+                this.clearButton.addEventListener('click', () => this.clearInput());
+                this.domainInput.addEventListener('input', this.debounce(() => {
+                    this.updateBackground();
+                    this.updateSuggestions();
+                }, 300));
+                this.domainInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.handleViewWebsite();
+                });
+                this.domainInput.addEventListener('focus', () => this.showSuggestions());
+                this.domainInput.addEventListener('blur', () => setTimeout(() => this.hideSuggestions(), 200));
+                this.suggestionList.addEventListener('click', (e) => {
+                    const suggestion = e.target.closest('.suggestion-item')?.dataset.value;
+                    if (suggestion) {
+                        this.domainInput.value = suggestion;
+                        this.handleViewWebsite();
+                    }
+                });
+                this.historyList.addEventListener('click', (e) => {
+                    const domain = e.target.closest('.history-item')?.dataset.domain;
+                    const deleteBtn = e.target.closest('.delete-btn');
+                    if (deleteBtn) {
+                        const domainToDelete = deleteBtn.closest('.history-item').dataset.domain;
+                        this.deleteHistoryItem(domainToDelete);
+                    } else if (domain) {
+                        this.domainInput.value = domain;
+                        this.handleViewWebsite();
+                    }
+                });
+                window.addEventListener('resize', () => this.resizeCanvas());
+            }
+
+            initAnimations() {
+                gsap.from('.input-card', {
+                    duration: 2.5,
+                    y: 200,
+                    opacity: 0,
+                    ease: 'power4.out',
+                    rotateX: 60
+                });
+                gsap.from('.domain-input', {
+                    duration: 1.8,
+                    delay: 0.5,
+                    x: -150,
+                    opacity: 0,
+                    ease: 'power3.out'
+                });
+                gsap.from('.action-buttons', {
+                    duration: 1.8,
+                    delay: 0.7,
+                    x: 150,
+                    opacity: 0,
+                    ease: 'power3.out'
+                });
+                gsap.to('.input-card', {
+                    duration: 6,
+                    rotateY: 8,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+
+            initParticles() {
+                const ctx = this.particleCanvas.getContext('2d');
+                this.resizeCanvas();
+
+                for (let i = 0; i < 150; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.particleCanvas.width,
+                        y: Math.random() * this.particleCanvas.height,
+                        radius: Math.random() * 3 + 1,
+                        speedX: (Math.random() - 0.5) * 3,
+                        speedY: (Math.random() - 0.5) * 3,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+
+                const animateParticles = () => {
+                    ctx.clearRect(0, 0, this.particleCanvas.width, this.particleCanvas.height);
+                    ctx.fillStyle = 'rgba(167, 139, 250, 0.3)';
+                    ctx.strokeStyle = 'rgba(167, 139, 250, 0.1)';
+                    ctx.lineWidth = 1.5;
+
+                    this.particles.forEach(p => {
+                        p.x += p.speedX;
+                        p.y += p.speedY;
+
+                        if (p.x < 0 || p.x > this.particleCanvas.width) p.speedX *= -1;
+                        if (p.y < 0 || p.y > this.particleCanvas.height) p.speedY *= -1;
+
+                        ctx.globalAlpha = p.opacity;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        this.particles.forEach(p2 => {
+                            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                            if (dist < 100) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.stroke();
+                            }
+                        });
+                    });
+
+                    ctx.globalAlpha = 1;
+                    requestAnimationFrame(animateParticles);
+                };
+
+                animateParticles();
+            }
+
+            resizeCanvas() {
+                this.particleCanvas.width =  = window.innerWidth;
+                this.particleCanvas.height = window.innerHeight;
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            async updateBackground() {
+                const domain = this.sanitizeDomain(this.domainInput.value);
+                if (!domain) {
+                    this.backgroundOverlay.style.backgroundImage = 'none';
+                    gsap.to(this.backgroundOverlay, {
+                        opacity: 0.5,
+                        duration: 2,
+                        ease: 'power4.inOut'
+                    });
+                    return;
+                }
+                try {
+                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=512`;
+                    this.backgroundOverlay.style.backgroundImage = `url(${favicon})`;
+                    gsap.to(this.backgroundOverlay, {
+                        opacity: 0.7,
+                        duration: 2,
+                        ease: 'power4.inOut'
+                    });
+                } catch {
+                    this.backgroundOverlay.style.backgroundImage = 'none';
+                }
+            }
+
+            updateSuggestions() {
+                const input = this.domainInput.value.toLowerCase();
+                const filtered = this.suggestions.filter(s => s.includes(input) && s !== input);
+                this.suggestionList.innerHTML = filtered.map(s => `
+                    <div class="suggestion-item" data-value="${s}">${s}</div>
+                `).join('');
+                this.suggestionList.style.display = filtered.length > 0 && input ? 'block' : 'none';
+            }
+
+            showSuggestions() {
+                this.updateSuggestions();
+            }
+
+            hideSuggestions() {
+                this.suggestionList.style.display = 'none';
+            }
+
+            sanitizeDomain(input) {
+                let domain = input.trim();
+                if (!domain) return '';
+                if (!domain.startsWith('http')) domain = `https://${domain}`;
+                return this.validUrlRegex.test(domain) ? domain : '';
+            }
+
+            showError(message) {
+                this.errorMessage.textContent = message;
+                this.errorMessage.classList.add('show');
+                gsap.to(this.errorMessage, {
+                    opacity: 1,
+                    duration: 0.7,
+                    ease: 'power4.out'
+                });
+                setTimeout(() => {
+                    gsap.to(this.errorMessage, {
+                        opacity: 0,
+                        duration: 0.7,
+                        ease: 'power4.in',
+                        onComplete: () => this.errorMessage.classList.remove('show')
+                    });
+                }, 5000);
+            }
+
+            toggleHistoryPanel() {
+                this.historyPanel.classList.toggle('open');
+                gsap.to(this.historyPanel, {
+                    right: this.historyPanel.classList.contains('open') ? 0 : -450,
+                    duration: 0.6,
+                    ease: 'power4.inOut'
+                });
+            }
+
+            renderHistory() {
+                this.historyList.innerHTML = this.history.slice(0, 15).map(domain => `
+                    <div class="history-item" data-domain="${domain}">
+                        <p>${domain}</p>
+                        <button class="delete-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                `).join('');
+            }
+
+            saveToHistory(domain) {
+                if (!this.history.includes(domain)) {
+                    this.history.unshift(domain);
+                    this.history = this.history.slice(0, 50);
+                    localStorage.setItem('domainHistory', JSON.stringify(this.history));
+                    this.renderHistory();
+                }
+            }
+
+            deleteHistoryItem(domain) {
+                this.history = this.history.filter(d => d !== domain);
+                localStorage.setItem('domainHistory', JSON.stringify(this.history));
+                this.renderHistory();
+            }
+
+            clearInput() {
+                this.domainInput.value = '';
+                this.updateBackground();
+                this.hideSuggestions();
+                gsap.to(this.domainInput, {
+                    scale: 0.95,
+                    duration: 0.3,
+                    ease: 'power4.in',
+                    yoyo: true,
+                    repeat: 1
+                });
+            }
+
+            createIframe(windowRef, url) {
+                const iframe = windowRef.document.createElement('iframe');
+                Object.assign(iframe.style, {
+                    position: 'fixed',
+                    width: '100vw',
+                    height: '100vh',
+                    top: '0',
+                    left: '0',
+                    zIndex: '2147483647',
+                    backgroundColor: 'white',
+                    border: 'none',
+                    transition: 'opacity 0.7s ease'
+                });
+                iframe.src = url;
+                iframe.style.opacity = '0';
+                return iframe;
+            }
+
+            async verifyIframeLoad(iframe) {
+                return new Promise((resolve, reject) => {
+                    iframe.onload = () => {
+                        gsap.to(iframe, {
+                            opacity: 1,
+                            duration: 0.7,
+                            ease: 'power4.out',
+                            onComplete: resolve
+                        });
+                    };
+                    iframe.onerror = () => reject(new Error('Failed to load website'));
+                    setTimeout(() => reject(new Error('Load timeout')), 25000);
+                });
+            }
+
+            async handleViewWebsite() {
+                const domain = this.sanitizeDomain(this.domainInput.value);
+                if (!domain) {
+                    this.showError('Please enter a valid domain.');
+                    return;
+                }
+
+                try {
+                    const newWindow = window.open('', '_blank');
+                    if (!newWindow) {
+                        throw new Error('Pop-up blocked. Please allow pop-ups.');
+                    }
+
+                    const iframe = this.createIframe(newWindow, domain);
+                    newWindow.document.body.appendChild(iframe);
+
+                    gsap.to(this.viewButton, {
+                        scale: 0.9,
+                        duration: 0.4,
+                        ease: 'power4.in',
+                        yoyo: true,
+                        repeat: 1
+                    });
+
+                    await this.verifyIframeLoad(iframe);
+                    this.saveToHistory(domain);
+                    this.viewButton.innerHTML = '<i class="fas fa-check"></i> Loaded!';
+                    gsap.to(this.viewButton, {
+                        backgroundColor: '#14b8a6',
+                        duration: 0.7,
+                        ease: 'power4.out'
+                    });
+                    setTimeout(() => {
+                        this.viewButton.innerHTML = '<i class="fas fa-globe"></i> View Website';
+                        gsap.to(this.viewButton, {
+                            backgroundColor: 'var(--primary)',
+                            duration: 0.7,
+                            ease: 'power4.out'
+                        });
+                    }, 3000);
+                } catch (error) {
+                    this.showError(error.message);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => new WebViewer());
+    </script>
+</body>
+</html>
