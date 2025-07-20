@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botsail - Status</title>
+    <link rel="stylesheet" href="background visuals/bot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="fade-in-container">
+        <nav class="navbar">
+            <a href="/" class="nav-button">Home</a>
+            <a href="/botsail" class="nav-button active">BotSail Status</a>
+            <a href="/myapps" class="nav-button">Other projects</a>
+        </nav>
+        <main class="status-container compact">
+            <h1 class="studio-title">Smart Script Studios</h1>
+            <div class="overall-status yellow-status">
+                <span class="status-indicator yellow"></span>
+                All systems being worked on.
+                <span class="update-time">Updated a few seconds ago</span>
+            </div>
+            <div class="service-group open">
+                <div class="service-header">
+                    <span class="dropdown-arrow">&#9660;</span>
+                    <h3>Services</h3>
+                </div>
+                <div class="service-list">
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">SailBot - free discord bot host service.</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot red"></span>
+                        <span class="service-name">Minecraft Server Hoster</span>
+                        <span class="service-status red-text">Down</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">BypassGPT</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">CodeReactor</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">BlizzerBest</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">PyrsmisGPT</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="status-dot yellow"></span>
+                        <span class="service-name">Website viewer.</span>
+                        <span class="service-status yellow-text">In development</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceHeader = document.querySelector('.service-header');
+            const serviceGroup = document.querySelector('.service-group');
+            serviceGroup.classList.add('open');
+            serviceHeader.addEventListener('click', () => {
+                serviceGroup.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
