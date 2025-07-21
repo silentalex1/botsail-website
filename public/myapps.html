@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botsail - My Projects</title>
+    <link rel="stylesheet" href="./background visuals/myapps.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="fade-in-container">
+        <nav class="navbar">
+            <a href="./index.html" class="nav-button">Home</a>
+            <a href="./botsail.html" class="nav-button">BotSail Status</a>
+            <a href="./myapps.html" class="nav-button active">Other projects</a>
+        </nav>
+        <main class="projects-container compact">
+            <h1 class="page-title">My Projects</h1>
+            <div class="search-bar-container compact">
+                <input type="text" id="projectSearch" placeholder="Search projects..." class="search-input compact">
+            </div>
+            <div class="project-grid compact">
+                <div class="project-card compact" data-project-name="minecraft server hoster">
+                    <h2>Minecraft Server Hoster</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot red"></span>
+                        <span class="status-text red-text">Down</span>
+                    </div>
+                    <button class="download-button" data-project-id="minecraft-server" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="botsail hosting service">
+                    <h2>BotSail hosting service.</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="botsail-hosting-service" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="bypassgpt">
+                    <h2>BypassGPT</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="bypassgpt" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="codereactor">
+                    <h2>CodeReactor</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="codereactor" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="blizzerbest">
+                    <h2>BlizzerBest</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="blizzerbest" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="pyrsmisgpt">
+                    <h2>PyrsmisGPT</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="pyrsmisgpt" disabled>Download</button>
+                </div>
+                <div class="project-card compact" data-project-name="website viewer">
+                    <h2>Website viewer.</h2>
+                    <div class="status-line compact">
+                        <span class="status-dot yellow"></span>
+                        <span class="status-text yellow-text">In development</span>
+                    </div>
+                    <button class="download-button" data-project-id="website-viewer" disabled>Download</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./myapps.js"></script>
+</body>
+</html>
